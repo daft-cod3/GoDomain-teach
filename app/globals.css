@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f7f9fc;
+  --fg: #0f172a;
+  --blue: #2563eb;
+  --blue-2: #1d4ed8;
+  --green: #22c55e;
+  --panel: #ffffff;
+  --panel-2: #eef4ff;
+  --border: rgba(15, 23, 42, 0.12);
+  --shadow: 0 18px 38px rgba(15, 23, 42, 0.12);
+  --shadow-tight: 0 10px 24px rgba(15, 23, 42, 0.12);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #0b1220;
+  --fg: #e2e8f0;
+  --blue: #4f7cff;
+  --blue-2: #2b55e4;
+  --green: #2dd174;
+  --panel: #121a2b;
+  --panel-2: #18243a;
+  --border: rgba(226, 232, 240, 0.14);
+  --shadow: 0 18px 38px rgba(0, 0, 0, 0.4);
+  --shadow-tight: 0 10px 24px rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-plex-mono);
+}
+
+* {
+  transition: background-color 220ms ease, color 220ms ease,
+    border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease,
+    opacity 220ms ease;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  background-image: radial-gradient(
+      circle at top left,
+      rgba(37, 99, 235, 0.12),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(34, 197, 94, 0.12),
+      transparent 50%
+    );
+  min-height: 100vh;
+}
+
+.font-display {
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.panel {
+  background-color: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow-tight);
+}
+
+.panel-soft {
+  background-color: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.btn {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.65rem 1.4rem;
+}
+
+.btn-primary {
+  background-color: var(--blue);
+  color: #ffffff;
+  box-shadow: var(--shadow-tight);
+}
+
+.btn-ghost {
+  background-color: var(--panel);
+  color: var(--fg);
+}
+
+.btn-green {
+  background-color: var(--green);
+  color: var(--fg);
+  box-shadow: var(--shadow-tight);
+}
+
+.chip {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.enter {
+  animation: rise 520ms ease both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
