@@ -90,7 +90,9 @@ export default function Home() {
                     className="flex items-center justify-between rounded-2xl border border-[var(--border)] bg-[var(--panel-2)] px-4 py-3 text-sm font-medium hover-lift"
                   >
                     <span>{item}</span>
-                    <span className="chip bg-white">Queued</span>
+                    <span className="chip bg-[var(--panel)] text-[var(--fg)]">
+                      Queued
+                    </span>
                   </div>
                 ))}
               </div>
@@ -132,40 +134,6 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-            </div>
-          </section>
-
-          <section
-            id="reports"
-            className="enter panel p-6 hover-lift"
-            style={{ animationDelay: "340ms" }}
-          >
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--fg)]/60">
-                  Progress tracking
-                </p>
-                <h2 className="font-display text-3xl font-semibold">Class performance</h2>
-              </div>
-              <span className="chip bg-[var(--green)] text-[var(--fg)]">Updated</span>
-            </div>
-            <div className="mt-6 grid gap-4 md:grid-cols-2">
-              {[
-                { label: "Theory completion", value: "72%" },
-                { label: "Practical readiness", value: "63%" },
-                { label: "Safety drills", value: "81%" },
-                { label: "Risk alerts", value: "5 cases" },
-              ].map((item) => (
-                <div
-                  key={item.label}
-                  className="rounded-2xl border border-[var(--border)] bg-[var(--panel-2)] p-4 hover-lift"
-                >
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--fg)]/60">
-                    {item.label}
-                  </p>
-                  <p className="mt-2 text-2xl font-semibold">{item.value}</p>
-                </div>
-              ))}
             </div>
           </section>
 

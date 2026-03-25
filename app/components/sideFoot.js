@@ -6,33 +6,22 @@ import Link from "next/link";
 const navItems = [
   { label: "Overview", href: "/", badge: "Live" },
   { label: "Students", href: "/students" },
+  { label: "Live Lessons", href: "/live-lessons" },
   { label: "Content", href: "/content" },
-  { label: "Messages", href: "/#messages" },
-  { label: "Reports", href: "/#reports" },
+  { label: "Profile", href: "/teacher" },
   { label: "Settings", href: "/settings" },
 ];
 
 export default function SideFoot({ active = "Dashboard" }) {
   const [open, setOpen] = useState(false);
-  const [theme, setTheme] = useState("light");
 
   useEffect(() => {
     const stored = typeof window !== "undefined" ? localStorage.getItem("theme") : null;
-    const preferred =
-      stored ||
-      (window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light");
-    setTheme(preferred);
+    const preferred = ["light", "dark", "system"].includes(stored)
+      ? stored
+      : "system";
     document.documentElement.dataset.theme = preferred;
   }, []);
-
-  const toggleTheme = () => {
-    const next = theme === "light" ? "dark" : "light";
-    setTheme(next);
-    document.documentElement.dataset.theme = next;
-    localStorage.setItem("theme", next);
-  };
 
   return (
     <>
@@ -43,22 +32,13 @@ export default function SideFoot({ active = "Dashboard" }) {
             Teacher dashboard
           </p>
         </div>
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={toggleTheme}
-            className="btn btn-ghost"
-          >
-            {theme === "light" ? "Dark" : "Light"}
-          </button>
-          <button
-            type="button"
-            onClick={() => setOpen(!open)}
-            className="btn btn-primary"
-          >
-            {open ? "Close" : "Menu"}
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={() => setOpen(!open)}
+          className="btn btn-primary"
+        >
+          {open ? "Close" : "Menu"}
+        </button>
       </div>
 
       <div className="relative">
@@ -83,13 +63,6 @@ export default function SideFoot({ active = "Dashboard" }) {
               </p>
             </div>
             <div className="hidden md:flex items-center gap-2">
-              <button
-                type="button"
-                onClick={toggleTheme}
-                className="btn btn-ghost"
-              >
-                {theme === "light" ? "Dark" : "Light"}
-              </button>
               <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--panel-2)] text-xs font-semibold">
                 GT
               </div>

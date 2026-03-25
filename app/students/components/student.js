@@ -1,4 +1,25 @@
+const medalToneStyles = {
+  amber: {
+    backgroundColor: "rgba(245, 158, 11, 0.16)",
+    borderColor: "rgba(245, 158, 11, 0.35)",
+  },
+  blue: {
+    backgroundColor: "rgba(37, 99, 235, 0.12)",
+    borderColor: "rgba(37, 99, 235, 0.3)",
+  },
+  green: {
+    backgroundColor: "rgba(34, 197, 94, 0.16)",
+    borderColor: "rgba(34, 197, 94, 0.34)",
+  },
+  rose: {
+    backgroundColor: "rgba(225, 29, 72, 0.12)",
+    borderColor: "rgba(225, 29, 72, 0.26)",
+  },
+};
+
 export default function StudentInfo({ student }) {
+  const studiedCount = student.studyDays.filter((item) => item.studied).length;
+
   return (
     <div className="flex w-full flex-col gap-8">
       <div className="flex flex-wrap items-center justify-between gap-4">
@@ -11,53 +32,81 @@ export default function StudentInfo({ student }) {
             {student.className} - {student.index}
           </p>
         </div>
-        <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel-2)] px-4 py-2 text-sm font-semibold">
-          {student.status}
+        <div className="flex flex-wrap gap-2">
+          <div className="rounded-full border border-[var(--border)] bg-[var(--panel-2)] px-4 py-2 text-sm font-semibold">
+            {student.track}
+          </div>
+          <div className="rounded-full border border-[var(--border)] bg-[rgba(34,197,94,0.14)] px-4 py-2 text-sm font-semibold">
+            {student.status}
+          </div>
         </div>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="grid gap-6 xl:grid-cols-[1.08fr_0.92fr]">
         <div className="panel p-6 hover-lift">
           <p className="font-display text-2xl font-semibold">Progress snapshot</p>
-          <div className="mt-4 rounded-2xl border border-[var(--border)] bg-[var(--panel-2)] p-4">
+          <div className="mt-4 rounded-3xl border border-[var(--border)] bg-[var(--panel-2)] p-4">
             <div className="flex items-center justify-between text-xs font-medium text-[var(--fg)]/60">
               <span>Completion</span>
               <span>{student.progress}%</span>
             </div>
-            <div className="mt-2 h-4 rounded-full border border-[var(--border)] bg-white">
+            <div className="mt-2 h-4 rounded-full border border-[var(--border)] bg-[var(--panel)]">
               <div
                 className="h-full rounded-full bg-[var(--blue)]"
                 style={{ width: `${student.progress}%` }}
               />
             </div>
           </div>
+
           <div className="mt-6 grid gap-4 md:grid-cols-3">
-            <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel-2)] p-4">
+            <div className="rounded-3xl border border-[var(--border)] bg-[var(--panel-2)] p-4">
               <p className="text-xs font-semibold text-[var(--fg)]/60">
-                Fee Status
+                Program
               </p>
-              <p className="mt-2 text-lg font-semibold">{student.feeStatus}</p>
+              <p className="mt-2 text-lg font-semibold">{student.track}</p>
             </div>
-            <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel-2)] p-4">
+            <div className="rounded-3xl border border-[var(--border)] bg-[var(--panel-2)] p-4">
               <p className="text-xs font-semibold text-[var(--fg)]/60">
                 Weeks in school
               </p>
               <p className="mt-2 text-lg font-semibold">{student.weeks}</p>
             </div>
-            <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-4">
+            <div className="rounded-3xl border border-[var(--border)] bg-[var(--panel)] p-4">
               <p className="text-xs font-semibold text-[var(--fg)]/60">
                 Next test
               </p>
               <p className="mt-2 text-lg font-semibold">{student.nextTest}</p>
             </div>
           </div>
+
+          <div className="mt-6 rounded-3xl border border-[var(--border)] bg-[linear-gradient(135deg,rgba(37,99,235,0.08),rgba(34,197,94,0.08))] p-4">
+            <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/60">
+              <span>5-day study streak</span>
+              <span className="text-[var(--fg)]">{studiedCount}/5 days</span>
+            </div>
+            <div className="mt-4 grid grid-cols-5 gap-2">
+              {student.studyDays.map((day) => (
+                <div key={day.label} className="text-center">
+                  <div
+                    className="h-12 rounded-2xl border border-[var(--border)]"
+                    style={{
+                      background: day.studied
+                        ? "linear-gradient(180deg, rgba(37,99,235,0.92), rgba(34,197,94,0.92))"
+                        : "var(--panel)",
+                    }}
+                  />
+                  <p className="mt-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/55">
+                    {day.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <div className="rounded-3xl border border-[var(--border)] bg-[var(--blue-2)] p-6 text-white shadow-[var(--shadow-tight)] hover-lift">
+        <div className="rounded-[28px] border border-[var(--border)] bg-[var(--blue-2)] p-6 text-white shadow-[var(--shadow-tight)] hover-lift">
           <p className="font-display text-2xl font-semibold">Instructor notes</p>
-          <p className="mt-4 text-sm font-medium text-white/80">
-            {student.notes}
-          </p>
+          <p className="mt-4 text-sm font-medium text-white/80">{student.notes}</p>
           <div className="mt-6 space-y-3">
             {student.weakAreas.map((area) => (
               <div
@@ -71,8 +120,8 @@ export default function StudentInfo({ student }) {
         </div>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
-        <div className="rounded-3xl border border-[var(--border)] bg-[var(--panel)] p-6 shadow-[var(--shadow-tight)] hover-lift">
+      <div className="grid gap-6 xl:grid-cols-[0.82fr_1.18fr]">
+        <div className="rounded-[28px] border border-[var(--border)] bg-[var(--panel)] p-6 shadow-[var(--shadow-tight)] hover-lift">
           <p className="font-display text-2xl font-semibold">Contact student</p>
           <div className="mt-5 space-y-3 text-sm font-medium text-[var(--fg)]/80">
             <p>Email: {student.contact.email}</p>
@@ -83,9 +132,28 @@ export default function StudentInfo({ student }) {
             Start chat
           </button>
         </div>
+
         <div className="panel p-6 hover-lift">
-          <p className="font-display text-2xl font-semibold">Learning checklist</p>
-          <div className="mt-4 grid gap-3 md:grid-cols-2">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <p className="font-display text-2xl font-semibold">Achievements and checklist</p>
+            <span className="chip bg-[var(--panel-2)] text-[var(--fg)]">
+              New medals weekly
+            </span>
+          </div>
+
+          <div className="mt-4 flex flex-wrap gap-2">
+            {student.achievements.map((achievement) => (
+              <span
+                key={`${achievement.week}-${achievement.medal}`}
+                className="rounded-full border px-3 py-2 text-xs font-semibold"
+                style={medalToneStyles[achievement.tone]}
+              >
+                {achievement.medal} · {achievement.week}
+              </span>
+            ))}
+          </div>
+
+          <div className="mt-6 grid gap-3 md:grid-cols-2">
             {student.checklist.map((item, index) => (
               <label
                 key={item}

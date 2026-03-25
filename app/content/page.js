@@ -99,7 +99,9 @@ export default function ContentPage() {
                       className="flex items-center justify-between rounded-2xl border border-[var(--border)] bg-[var(--panel)] px-4 py-3 text-sm font-medium"
                     >
                       <span className="truncate">{item}</span>
-                      <span className="chip bg-white">Saved</span>
+                      <span className="chip bg-[var(--panel-2)] text-[var(--fg)]">
+                        Saved
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -135,7 +137,7 @@ export default function ContentPage() {
                     </p>
                     <label className="flex items-center gap-2 text-xs font-semibold text-[var(--fg)]/60">
                       Correct option position
-                      <select className="rounded-xl border border-[var(--border)] bg-white px-3 py-2 text-xs font-semibold text-[var(--fg)] focus:outline-none focus:ring-2 focus:ring-[var(--blue)]">
+                      <select className="rounded-xl border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-xs font-semibold text-[var(--fg)] focus:outline-none focus:ring-2 focus:ring-[var(--blue)]">
                         <option>A</option>
                         <option>B</option>
                         <option>C</option>
@@ -146,7 +148,7 @@ export default function ContentPage() {
                   <input
                     type="text"
                     placeholder={`Question ${index}`}
-                    className="w-full rounded-2xl border border-[var(--border)] bg-white px-4 py-3 text-sm font-medium text-[var(--fg)] focus:outline-none focus:ring-2 focus:ring-[var(--blue)]"
+                    className="w-full rounded-2xl border border-[var(--border)] bg-[var(--panel)] px-4 py-3 text-sm font-medium text-[var(--fg)] placeholder:text-[var(--fg)]/50 focus:outline-none focus:ring-2 focus:ring-[var(--blue)]"
                   />
                   <div className="grid gap-3 md:grid-cols-2">
                     <input
