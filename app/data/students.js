@@ -2,7 +2,9 @@ export const students = [
   {
     id: "GD-201",
     name: "Amina Otieno",
-    className: "Class B Manual",
+    className: "Class B1 Manual",
+    licenseCategory: "B",
+    classTier: "B1",
     index: "IDX-104",
     joinedDate: "2024-02-15",
     phone: "+254 712 384 910",
@@ -44,7 +46,9 @@ export const students = [
   {
     id: "GD-202",
     name: "Kevin Kariuki",
-    className: "Class C Automatic",
+    className: "Class C1 Automatic",
+    licenseCategory: "C",
+    classTier: "C1",
     index: "IDX-221",
     joinedDate: "2024-06-03",
     phone: "+254 733 221 458",
@@ -86,7 +90,9 @@ export const students = [
   {
     id: "GD-203",
     name: "Lynn Mwikali",
-    className: "Class B Manual",
+    className: "Class A1 Rider",
+    licenseCategory: "A",
+    classTier: "A1",
     index: "IDX-119",
     joinedDate: "2024-03-27",
     phone: "+254 701 992 304",
@@ -128,7 +134,9 @@ export const students = [
   {
     id: "GD-204",
     name: "Brian Kiptoo",
-    className: "Class D Truck",
+    className: "Class D1 Truck",
+    licenseCategory: "D",
+    classTier: "D1",
     index: "IDX-087",
     joinedDate: "2023-11-08",
     phone: "+254 722 550 109",
@@ -170,7 +178,9 @@ export const students = [
   {
     id: "GD-205",
     name: "Njeri Kimani",
-    className: "Class B Manual",
+    className: "Class A2 Rider",
+    licenseCategory: "A",
+    classTier: "A2",
     index: "IDX-176",
     joinedDate: "2024-07-19",
     phone: "+254 714 660 772",
@@ -212,7 +222,9 @@ export const students = [
   {
     id: "GD-206",
     name: "Sam Ouma",
-    className: "Class C Automatic",
+    className: "Class C2 Automatic",
+    licenseCategory: "C",
+    classTier: "C2",
     index: "IDX-190",
     joinedDate: "2024-01-29",
     phone: "+254 711 408 633",
@@ -253,9 +265,58 @@ export const students = [
   },
 ];
 
+export const classCategoryCatalog = [
+  {
+    id: "A",
+    title: "Class A",
+    levels: ["A1", "A2", "A3"],
+    description: "Rider licensing, balance control, and two-wheel road safety.",
+    accent: "rgba(219, 39, 119, 0.18)",
+    glow: "rgba(219, 39, 119, 0.24)",
+  },
+  {
+    id: "B",
+    title: "Class B",
+    levels: ["B1", "B2"],
+    description: "Manual and passenger-car training with road test preparation.",
+    accent: "rgba(37, 99, 235, 0.18)",
+    glow: "rgba(37, 99, 235, 0.24)",
+  },
+  {
+    id: "C",
+    title: "Class C",
+    levels: ["C1", "C2"],
+    description: "Automatic and commercial-flow driving with controlled pacing.",
+    accent: "rgba(34, 197, 94, 0.18)",
+    glow: "rgba(34, 197, 94, 0.24)",
+  },
+  {
+    id: "D",
+    title: "Class D",
+    levels: ["D1", "D2"],
+    description: "Heavy-duty planning, truck control, and long-route readiness.",
+    accent: "rgba(245, 158, 11, 0.18)",
+    glow: "rgba(245, 158, 11, 0.24)",
+  },
+];
+
 export const activeStudentsCount = students.filter(
   (student) => student.status === "Active"
 ).length;
+
+export function getStudentClassCategory(student) {
+  return student.licenseCategory ?? student.className.replace("Class ", "").charAt(0);
+}
+
+export function getClassCategoryConfig(categoryId) {
+  return classCategoryCatalog.find((category) => category.id === categoryId);
+}
+
+export function getStudentsByClassCategory(categoryId) {
+  return students.filter(
+    (student) => getStudentClassCategory(student) === categoryId
+  );
+}
 
 export function getStudentById(studentId) {
   return students.find((student) => student.id === studentId);

@@ -3,7 +3,13 @@
 import { useEffect, useState } from "react";
 import SideFoot from "../components/sideFoot";
 import StudentCard from "../components/studentCard";
-import { activeStudentsCount, students } from "../data/students";
+import ClassCategoryCard from "./components/classCategoryCard";
+import {
+  activeStudentsCount,
+  classCategoryCatalog,
+  getStudentsByClassCategory,
+  students,
+} from "../data/students";
 
 const DRAFT_KEY = "goTeach.communicationDraft";
 
@@ -58,6 +64,10 @@ export default function StudentsPage() {
   const filteredStudents = students.filter((student) =>
     matchesStudent(student, searchTerm)
   );
+  const classCategories = classCategoryCatalog.map((category) => ({
+    ...category,
+    count: getStudentsByClassCategory(category.id).length,
+  }));
 
   const recipientStudents =
     scope === "all"
@@ -293,6 +303,36 @@ export default function StudentsPage() {
                   </button>
                 </div>
               </div>
+            </div>
+          </section>
+
+          <section className="space-y-4">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--fg)]/60">
+                  Class categories
+                </p>
+                <h2 className="mt-2 font-display text-3xl font-semibold">
+                  A to D learner groups
+                </h2>
+                <p className="mt-2 max-w-3xl text-sm font-medium text-[var(--fg)]/70">
+                  Open a category to view all learner cards grouped under that
+                  class family.
+                </p>
+              </div>
+              <span className="chip bg-[var(--panel-2)] text-[var(--fg)]">
+                {classCategories.length} groups
+              </span>
+            </div>
+
+            <div className="grid gap-4 xl:grid-cols-2">
+              {classCategories.map((category) => (
+                <ClassCategoryCard
+                  key={category.id}
+                  category={category}
+                  count={category.count}
+                />
+              ))}
             </div>
           </section>
 

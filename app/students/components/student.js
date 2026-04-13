@@ -1,3 +1,16 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import {
+  CONTENT_LINKS_KEY,
+  CONTENT_MEDIA_KEY,
+  defaultPublishedLinks,
+  defaultPublishedMedia,
+  formatFileSize,
+  formatPublishedDate,
+  readStudioCollection,
+} from "../../lib/contentStudioStore";
+
 const medalToneStyles = {
   amber: {
     backgroundColor: "rgba(245, 158, 11, 0.16)",
@@ -19,6 +32,24 @@ const medalToneStyles = {
 
 export default function StudentInfo({ student }) {
   const studiedCount = student.studyDays.filter((item) => item.studied).length;
+  const [publishedLinks, setPublishedLinks] = useState(defaultPublishedLinks);
+  const [publishedMedia, setPublishedMedia] = useState(defaultPublishedMedia);
+
+  useEffect(() => {
+    function syncPublishedContent() {
+      setPublishedLinks(
+        readStudioCollection(CONTENT_LINKS_KEY, defaultPublishedLinks),
+      );
+      setPublishedMedia(
+        readStudioCollection(CONTENT_MEDIA_KEY, defaultPublishedMedia),
+      );
+    }
+
+    syncPublishedContent();
+    window.addEventListener("storage", syncPublishedContent);
+
+    return () => window.removeEventListener("storage", syncPublishedContent);
+  }, []);
 
   return (
     <div className="flex w-full flex-col gap-8">
@@ -27,7 +58,9 @@ export default function StudentInfo({ student }) {
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--fg)]/60">
             Student profile
           </p>
-          <h1 className="font-display text-4xl font-semibold">{student.name}</h1>
+          <h1 className="font-display text-4xl font-semibold">
+            {student.name}
+          </h1>
           <p className="text-sm font-medium text-[var(--fg)]/70">
             {student.className} - {student.index}
           </p>
@@ -44,7 +77,9 @@ export default function StudentInfo({ student }) {
 
       <div className="grid gap-6 xl:grid-cols-[1.08fr_0.92fr]">
         <div className="panel p-6 hover-lift">
-          <p className="font-display text-2xl font-semibold">Progress snapshot</p>
+          <p className="font-display text-2xl font-semibold">
+            Progress snapshot
+          </p>
           <div className="mt-4 rounded-3xl border border-[var(--border)] bg-[var(--panel-2)] p-4">
             <div className="flex items-center justify-between text-xs font-medium text-[var(--fg)]/60">
               <span>Completion</span>
@@ -105,8 +140,12 @@ export default function StudentInfo({ student }) {
         </div>
 
         <div className="rounded-[28px] border border-[var(--border)] bg-[var(--blue-2)] p-6 text-white shadow-[var(--shadow-tight)] hover-lift">
-          <p className="font-display text-2xl font-semibold">Instructor notes</p>
-          <p className="mt-4 text-sm font-medium text-white/80">{student.notes}</p>
+          <p className="font-display text-2xl font-semibold">
+            Instructor notes
+          </p>
+          <p className="mt-4 text-sm font-medium text-white/80">
+            {student.notes}
+          </p>
           <div className="mt-6 space-y-3">
             {student.weakAreas.map((area) => (
               <div
@@ -119,6 +158,137 @@ export default function StudentInfo({ student }) {
           </div>
         </div>
       </div>
+
+      <section className="panel p-6 hover-lift">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--fg)]/60">
+              Published from GoDomain
+            </p>
+            <h2 className="mt-2 font-display text-3xl font-semibold">
+              Student dashboard feed
+            </h2>
+            <p className="mt-2 max-w-3xl text-sm font-medium text-[var(--fg)]/70">
+              Newly added learning links appear here first, and recent teacher
+              uploads are listed underneath so students can see what is live.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <span className="chip bg-[var(--green)] text-[var(--fg)]">
+              {publishedLinks.length} links
+            </span>
+            <span className="chip bg-[var(--panel-2)] text-[var(--fg)]">
+              {publishedMedia.length} media
+            </span>
+          </div>
+        </div>
+
+        <div className="mt-6 grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
+          <div className="rounded-[28px] border border-[var(--border)] bg-[linear-gradient(135deg,rgba(37,99,235,0.08),rgba(34,197,94,0.08))] p-5">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--fg)]/55">
+                  Latest live link
+                </p>
+                <h3 className="mt-2 text-xl font-semibold">
+                  {publishedLinks[0]?.label ?? "No live links yet"}
+                </h3>
+              </div>
+              <span className="chip bg-[var(--blue)] text-white">Latest</span>
+            </div>
+
+            {publishedLinks[0]
+              ? <a
+                  href={publishedLinks[0].url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-4 block rounded-[24px] border border-[var(--border)] bg-[var(--panel)] px-4 py-4 hover:-translate-y-0.5 hover:shadow-[var(--shadow-tight)]"
+                >
+                  <span className="block truncate text-sm font-semibold">
+                    {publishedLinks[0].url}
+                  </span>
+                  <span className="mt-2 block text-xs font-medium text-[var(--fg)]/60">
+                    Published {formatPublishedDate(publishedLinks[0].addedAt)}
+                  </span>
+                </a>
+              : <div className="mt-4 rounded-[24px] border border-dashed border-[var(--border)] bg-[var(--panel)] px-4 py-8 text-center text-sm font-medium text-[var(--fg)]/55">
+                  No live links have been published yet.
+                </div>}
+
+            <div className="mt-4 space-y-2">
+              {publishedLinks.slice(1, 4).map((link) => (
+                <div
+                  key={link.id}
+                  className="flex items-center justify-between rounded-2xl border border-[var(--border)] bg-[var(--panel)]/78 px-4 py-3 text-sm font-medium"
+                >
+                  <div className="min-w-0">
+                    <p className="truncate">{link.url}</p>
+                    <p className="mt-1 text-xs text-[var(--fg)]/60">
+                      {formatPublishedDate(link.addedAt)}
+                    </p>
+                  </div>
+                  <span className="chip bg-[var(--panel-2)] text-[var(--fg)]">
+                    Live
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-[28px] border border-[var(--border)] bg-[var(--panel)] p-5 shadow-[var(--shadow-tight)]">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--fg)]/55">
+                  Recent uploads
+                </p>
+                <h3 className="mt-2 text-xl font-semibold">Media published</h3>
+              </div>
+              <span className="chip bg-[var(--panel-2)] text-[var(--fg)]">
+                Synced
+              </span>
+            </div>
+
+            <div className="mt-4 space-y-3">
+              {publishedMedia.length > 0
+                ? publishedMedia.slice(0, 4).map((item, index) => (
+                    <div
+                      key={item.id}
+                      className={`rounded-2xl border px-4 py-4 ${
+                        index === 0
+                          ? "border-[rgba(37,99,235,0.24)] bg-[linear-gradient(135deg,rgba(37,99,235,0.08),rgba(255,255,255,0.88))]"
+                          : "border-[var(--border)] bg-[var(--panel-2)]"
+                      }`}
+                    >
+                      <div className="flex flex-wrap items-center justify-between gap-3">
+                        <div>
+                          <p className="text-sm font-semibold">{item.name}</p>
+                          <p className="mt-1 text-xs font-medium text-[var(--fg)]/60">
+                            {item.kind} | {formatFileSize(item.size)}
+                          </p>
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                          {index === 0
+                            ? <span className="chip bg-[var(--blue)] text-white">
+                                Latest
+                              </span>
+                            : null}
+                          <span className="chip bg-[var(--panel)] text-[var(--fg)]">
+                            {item.status}
+                          </span>
+                        </div>
+                      </div>
+                      <p className="mt-3 text-xs font-medium text-[var(--fg)]/60">
+                        Uploaded {formatPublishedDate(item.uploadedAt)}
+                      </p>
+                    </div>
+                  ))
+                : <div className="rounded-[24px] border border-dashed border-[var(--border)] bg-[var(--panel-2)] px-4 py-10 text-center text-sm font-medium text-[var(--fg)]/55">
+                    No media has been published yet.
+                  </div>}
+            </div>
+          </div>
+        </div>
+      </section>
 
       <div className="grid gap-6 xl:grid-cols-[0.82fr_1.18fr]">
         <div className="rounded-[28px] border border-[var(--border)] bg-[var(--panel)] p-6 shadow-[var(--shadow-tight)] hover-lift">
@@ -135,7 +305,9 @@ export default function StudentInfo({ student }) {
 
         <div className="panel p-6 hover-lift">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <p className="font-display text-2xl font-semibold">Achievements and checklist</p>
+            <p className="font-display text-2xl font-semibold">
+              Achievements and checklist
+            </p>
             <span className="chip bg-[var(--panel-2)] text-[var(--fg)]">
               New medals weekly
             </span>
@@ -148,7 +320,7 @@ export default function StudentInfo({ student }) {
                 className="rounded-full border px-3 py-2 text-xs font-semibold"
                 style={medalToneStyles[achievement.tone]}
               >
-                {achievement.medal} · {achievement.week}
+                {achievement.medal} - {achievement.week}
               </span>
             ))}
           </div>
