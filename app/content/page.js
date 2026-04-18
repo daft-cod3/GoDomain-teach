@@ -24,6 +24,101 @@ const materials = [
   { title: "Defensive driving slides", type: "SLIDES" },
 ];
 
+function StudioSparkIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...props}>
+      <path
+        d="m12 3.75 1.35 3.3 3.4 1.2-3.4 1.2L12 12.75l-1.35-3.3-3.4-1.2 3.4-1.2L12 3.75Z"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+      />
+      <path
+        d="m18 12.5.82 2.02 2.03.73-2.03.72L18 18l-.82-2.03-2.03-.72 2.03-.73L18 12.5Z"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+      />
+      <path
+        d="m6 13 .67 1.66 1.66.59-1.66.58L6 17.5l-.67-1.67-1.66-.58 1.66-.59L6 13Z"
+        strokeWidth="1.8"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function MediaStackIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...props}>
+      <rect x="4" y="5" width="16" height="14" rx="3" strokeWidth="1.8" />
+      <path
+        d="m8.25 14.75 2.5-2.5 2.25 2.25 2.75-3 2.25 3.25"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <circle cx="9" cy="9.25" r="1.25" strokeWidth="1.8" />
+    </svg>
+  );
+}
+
+function LinkLibraryIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...props}>
+      <path
+        d="M10.25 7.75H8.5a4 4 0 0 0 0 8h1.75"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+      <path
+        d="M13.75 7.75h1.75a4 4 0 0 1 0 8h-1.75"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+      <path d="M8.75 12h6.5" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function QuizBuilderIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...props}>
+      <path
+        d="M6 5.25h12A1.75 1.75 0 0 1 19.75 7v10A1.75 1.75 0 0 1 18 18.75H6A1.75 1.75 0 0 1 4.25 17V7A1.75 1.75 0 0 1 6 5.25Z"
+        strokeWidth="1.8"
+      />
+      <path
+        d="M8 9h8M8 12.5h4.5M8 16h6"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function VaultIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {...props}>
+      <path
+        d="M5 7.5A2.5 2.5 0 0 1 7.5 5h9A2.5 2.5 0 0 1 19 7.5v9A2.5 2.5 0 0 1 16.5 19h-9A2.5 2.5 0 0 1 5 16.5v-9Z"
+        strokeWidth="1.8"
+      />
+      <path d="M8.25 11.75h7.5" strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M10 9.5h4" strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M10 14h4" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function SectionMarker({ Icon, toneClass = "text-[var(--blue)]" }) {
+  return (
+    <span
+      className={`icon-shell h-12 w-12 shadow-[var(--shadow-tight)] ${toneClass}`}
+    >
+      <Icon className="h-5 w-5" />
+    </span>
+  );
+}
+
 function getHostnameLabel(url) {
   try {
     return new URL(url).hostname.replace(/^www\./, "");
@@ -208,44 +303,69 @@ export default function ContentPage() {
   const contentCount = materials.length + links.length + mediaItems.length;
 
   return (
-    <div className="min-h-screen px-6 py-8">
-      <div className="grid w-full gap-6 lg:grid-cols-[280px_1fr]">
+    <div className="app-shell">
+      <div className="dashboard-layout">
         <SideFoot active="Content" />
-        <main className="space-y-6">
-          <section className="panel p-6">
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--fg)]/60">
-                  Content studio
-                </p>
-                <h1 className="font-display text-3xl font-semibold">
-                  Learning content
-                </h1>
+        <main className="dashboard-main space-y-6">
+          <section className="dashboard-section enter rounded-[34px] p-6 sm:p-7">
+            <div className="absolute -right-10 top-0 h-40 w-40 rounded-full bg-[var(--aura-blue)] blur-3xl" />
+            <div className="absolute bottom-0 left-8 h-28 w-28 rounded-full bg-[var(--aura-green)] blur-3xl" />
+
+            <div className="relative flex flex-wrap items-center justify-between gap-4">
+              <div className="flex max-w-3xl items-start gap-4">
+                <SectionMarker
+                  Icon={StudioSparkIcon}
+                  toneClass="text-[var(--blue)]"
+                />
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--fg)]/60">
+                    Content studio
+                  </p>
+                  <h1 className="font-display text-3xl font-semibold sm:text-4xl">
+                    Learning content
+                  </h1>
+                  <p className="mt-3 max-w-2xl text-sm font-medium leading-6 text-[var(--muted)]">
+                    Upload media, publish links, build quizzes, and shape the
+                    student learning path from one polished studio workspace.
+                  </p>
+                </div>
               </div>
-              <span className="chip bg-[var(--blue)] text-white">
-                {contentCount} items
-              </span>
+              <div className="flex flex-wrap gap-2">
+                <span className="chip bg-[var(--blue)] text-white">
+                  {contentCount} items
+                </span>
+                <span className="chip bg-[var(--panel-strong)] text-[var(--fg)]">
+                  Adaptive theme
+                </span>
+              </div>
             </div>
           </section>
 
           <section className="grid gap-6 lg:grid-cols-[1fr_1fr]">
-            <div className="panel p-6">
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--fg)]/60">
-                    Media upload
-                  </p>
-                  <h2 className="font-display text-2xl font-semibold">
-                    Video and image
-                  </h2>
+            <div className="dashboard-section enter rounded-[32px] p-6">
+              <div className="absolute -right-8 top-8 h-24 w-24 rounded-full bg-[var(--aura-blue)] blur-3xl" />
+              <div className="relative flex items-center justify-between gap-3">
+                <div className="flex items-start gap-4">
+                  <SectionMarker
+                    Icon={MediaStackIcon}
+                    toneClass="text-[var(--green)]"
+                  />
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--fg)]/60">
+                      Media upload
+                    </p>
+                    <h2 className="font-display text-2xl font-semibold">
+                      Video and image
+                    </h2>
+                  </div>
                 </div>
                 <span className="chip bg-[var(--green)] text-[var(--fg)]">
                   {mediaItems.length} live
                 </span>
               </div>
 
-              <div className="mt-5 grid gap-4">
-                <div className="glass-soft rounded-[28px] p-4">
+              <div className="relative mt-5 grid gap-4">
+                <div className="glass-soft interactive-tile spotlight-ring rounded-[30px] p-4">
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/58">
@@ -259,22 +379,22 @@ export default function ContentPage() {
                       ? <span className="chip bg-[var(--blue)] text-white">
                           {latestMedia.status}
                         </span>
-                      : <span className="chip bg-[var(--panel)] text-[var(--fg)]">
+                      : <span className="chip bg-[var(--panel-strong)] text-[var(--fg)]">
                           No media yet
                         </span>}
                   </div>
 
                   {latestMedia
                     ? <div className="mt-4 grid gap-4 sm:grid-cols-[0.95fr_1.05fr]">
-                        <div className="relative h-48 overflow-hidden rounded-[28px] border border-[var(--border)] bg-[var(--panel)]/80">
+                        <div className="relative h-48 overflow-hidden rounded-[28px] border border-[var(--border)] bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))]">
                           {renderMediaPreview(latestMedia)}
                         </div>
-                        <div className="rounded-[28px] border border-[var(--border)] bg-[var(--panel)]/72 p-4">
+                        <div className="rounded-[28px] border border-[var(--border)] bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] p-4">
                           <div className="flex flex-wrap gap-2">
-                            <span className="chip bg-[var(--panel-2)] text-[var(--fg)]">
+                            <span className="chip bg-[var(--panel)] text-[var(--fg)]">
                               {latestMedia.kind}
                             </span>
-                            <span className="chip bg-[var(--panel-2)] text-[var(--fg)]">
+                            <span className="chip bg-[var(--panel)] text-[var(--fg)]">
                               {formatFileSize(latestMedia.size)}
                             </span>
                           </div>
@@ -289,13 +409,13 @@ export default function ContentPage() {
                           </p>
                         </div>
                       </div>
-                    : <div className="mt-4 rounded-[28px] border border-dashed border-[var(--border)] bg-[var(--panel)]/65 px-4 py-10 text-center text-sm font-medium text-[var(--fg)]/55">
+                    : <div className="mt-4 rounded-[28px] border border-dashed border-[var(--border)] bg-[linear-gradient(180deg,var(--panel),var(--panel-deep))] px-4 py-10 text-center text-sm font-medium text-[var(--fg)]/55">
                         Upload a video or image to show the newest media here
                         instantly.
                       </div>}
                 </div>
 
-                <label className="panel-soft flex flex-col gap-2 p-4 text-sm font-medium text-[var(--fg)]/70">
+                <label className="panel-soft interactive-tile flex flex-col gap-2 rounded-[26px] p-4 text-sm font-medium text-[var(--fg)]/70">
                   Upload lesson video
                   <input
                     type="file"
@@ -304,7 +424,7 @@ export default function ContentPage() {
                     onChange={(event) => handleMediaUpload("Video", event)}
                   />
                 </label>
-                <label className="panel-soft flex flex-col gap-2 p-4 text-sm font-medium text-[var(--fg)]/70">
+                <label className="panel-soft interactive-tile flex flex-col gap-2 rounded-[26px] p-4 text-sm font-medium text-[var(--fg)]/70">
                   Upload cover image
                   <input
                     type="file"
@@ -318,10 +438,10 @@ export default function ContentPage() {
                   {mediaItems.slice(0, 3).map((item, index) => (
                     <div
                       key={item.id}
-                      className={`flex items-center justify-between rounded-2xl border px-4 py-3 text-sm font-medium ${
+                      className={`interactive-tile flex items-center justify-between rounded-[24px] border px-4 py-3 text-sm font-medium ${
                         index === 0
-                          ? "border-[rgba(37,99,235,0.26)] bg-[var(--panel)] shadow-[var(--shadow-tight)]"
-                          : "border-[var(--border)] bg-[var(--panel-2)]"
+                          ? "border-[rgba(37,99,235,0.26)] bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] shadow-[var(--shadow-tight)]"
+                          : "border-[var(--border)] bg-[linear-gradient(180deg,var(--panel),var(--panel-deep))]"
                       }`}
                     >
                       <div>
@@ -336,7 +456,7 @@ export default function ContentPage() {
                               Latest
                             </span>
                           : null}
-                        <span className="chip bg-[var(--panel)] text-[var(--fg)]">
+                        <span className="chip bg-[var(--panel-strong)] text-[var(--fg)]">
                           {item.status}
                         </span>
                       </div>
@@ -346,22 +466,29 @@ export default function ContentPage() {
               </div>
             </div>
 
-            <div className="panel p-6">
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--fg)]/60">
-                    Links library
-                  </p>
-                  <h2 className="font-display text-2xl font-semibold">
-                    Add learning links
-                  </h2>
+            <div className="dashboard-section enter rounded-[32px] p-6">
+              <div className="absolute -left-6 top-8 h-24 w-24 rounded-full bg-[var(--aura-green)] blur-3xl" />
+              <div className="relative flex items-center justify-between gap-3">
+                <div className="flex items-start gap-4">
+                  <SectionMarker
+                    Icon={LinkLibraryIcon}
+                    toneClass="text-[var(--blue)]"
+                  />
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--fg)]/60">
+                      Links library
+                    </p>
+                    <h2 className="font-display text-2xl font-semibold">
+                      Add learning links
+                    </h2>
+                  </div>
                 </div>
                 <span className="chip bg-[var(--blue)] text-white">
                   {links.length} links
                 </span>
               </div>
 
-              <div className="mt-5 space-y-4">
+              <div className="relative mt-5 space-y-4">
                 <form
                   className="space-y-3"
                   onSubmit={(event) => {
@@ -374,7 +501,7 @@ export default function ContentPage() {
                     value={linkInput}
                     onChange={(event) => setLinkInput(event.target.value)}
                     placeholder="https://..."
-                    className="w-full rounded-2xl border border-[var(--border)] bg-[var(--panel-2)] px-4 py-3 text-sm font-medium text-[var(--fg)] focus:outline-none focus:ring-2 focus:ring-[var(--blue)]"
+                    className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-[var(--fg)] focus:outline-none focus:ring-2 focus:ring-[var(--blue)]"
                   />
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <button type="submit" className="btn btn-primary">
@@ -387,7 +514,7 @@ export default function ContentPage() {
                 </form>
 
                 {latestLink
-                  ? <div className="glass-soft rounded-[28px] p-4">
+                  ? <div className="glass-soft interactive-tile spotlight-ring rounded-[30px] p-4">
                       <div className="flex flex-wrap items-center justify-between gap-3">
                         <div>
                           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/58">
@@ -405,7 +532,7 @@ export default function ContentPage() {
                         href={latestLink.url}
                         target="_blank"
                         rel="noreferrer"
-                        className="mt-4 block rounded-[24px] border border-[var(--border)] bg-[var(--panel)] px-4 py-4 text-sm font-medium text-[var(--fg)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-tight)]"
+                        className="interactive-tile mt-4 block rounded-[24px] border border-[var(--border)] bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] px-4 py-4 text-sm font-medium text-[var(--fg)]"
                       >
                         <span className="block truncate">{latestLink.url}</span>
                         <span className="mt-2 block text-xs text-[var(--fg)]/55">
@@ -419,10 +546,10 @@ export default function ContentPage() {
                   {links.map((item, index) => (
                     <div
                       key={item.id}
-                      className={`flex items-center justify-between rounded-2xl border px-4 py-3 text-sm font-medium ${
+                      className={`interactive-tile flex items-center justify-between rounded-[24px] border px-4 py-3 text-sm font-medium ${
                         index === 0
-                          ? "border-[rgba(37,99,235,0.26)] bg-[var(--panel)] shadow-[var(--shadow-tight)]"
-                          : "border-[var(--border)] bg-[var(--panel)]"
+                          ? "border-[rgba(37,99,235,0.26)] bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] shadow-[var(--shadow-tight)]"
+                          : "border-[var(--border)] bg-[linear-gradient(180deg,var(--panel),var(--panel-deep))]"
                       }`}
                     >
                       <div className="min-w-0">
@@ -437,7 +564,7 @@ export default function ContentPage() {
                               Latest
                             </span>
                           : null}
-                        <span className="chip bg-[var(--panel-2)] text-[var(--fg)]">
+                        <span className="chip bg-[var(--panel-strong)] text-[var(--fg)]">
                           {item.status}
                         </span>
                       </div>
@@ -450,30 +577,40 @@ export default function ContentPage() {
 
           <SetTest />
 
-          <section className="panel p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--fg)]/60">
-                  Quiz creation
-                </p>
-                <h2 className="font-display text-2xl font-semibold">
-                  Build a quiz
-                </h2>
+          <section className="dashboard-section enter rounded-[32px] p-6">
+            <div className="absolute -right-6 top-0 h-24 w-24 rounded-full bg-[var(--aura-rose)] blur-3xl" />
+            <div className="relative flex items-center justify-between">
+              <div className="flex items-start gap-4">
+                <SectionMarker
+                  Icon={QuizBuilderIcon}
+                  toneClass="text-[var(--amber)]"
+                />
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--fg)]/60">
+                    Quiz creation
+                  </p>
+                  <h2 className="font-display text-2xl font-semibold">
+                    Build a quiz
+                  </h2>
+                </div>
               </div>
               <span className="chip bg-[var(--green)] text-[var(--fg)]">
                 2 questions
               </span>
             </div>
-            <div className="mt-6 grid gap-6">
+            <div className="relative mt-6 grid gap-6">
               {[1, 2].map((index) => (
-                <div key={index} className="panel-soft flex flex-col gap-4 p-4">
+                <div
+                  key={index}
+                  className="panel-soft interactive-tile flex flex-col gap-4 rounded-[28px] p-4"
+                >
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <p className="text-sm font-semibold text-[var(--fg)]/70">
                       Question {index}
                     </p>
                     <label className="flex items-center gap-2 text-xs font-semibold text-[var(--fg)]/60">
                       Correct option position
-                      <select className="rounded-xl border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-xs font-semibold text-[var(--fg)] focus:outline-none focus:ring-2 focus:ring-[var(--blue)]">
+                      <select className="field-shell rounded-xl px-3 py-2 text-xs font-semibold text-[var(--fg)] focus:outline-none focus:ring-2 focus:ring-[var(--blue)]">
                         <option>A</option>
                         <option>B</option>
                         <option>C</option>
@@ -484,28 +621,28 @@ export default function ContentPage() {
                   <input
                     type="text"
                     placeholder={`Question ${index}`}
-                    className="w-full rounded-2xl border border-[var(--border)] bg-[var(--panel)] px-4 py-3 text-sm font-medium text-[var(--fg)] placeholder:text-[var(--fg)]/50 focus:outline-none focus:ring-2 focus:ring-[var(--blue)]"
+                    className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-[var(--fg)] placeholder:text-[var(--fg)]/50 focus:outline-none focus:ring-2 focus:ring-[var(--blue)]"
                   />
                   <div className="grid gap-3 md:grid-cols-2">
                     <input
                       type="text"
                       placeholder="Answer A"
-                      className="w-full rounded-2xl border border-[var(--border)] bg-[var(--panel)] px-4 py-3 text-sm font-medium text-[var(--fg)] focus:outline-none focus:ring-2 focus:ring-[var(--blue)]"
+                      className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-[var(--fg)] focus:outline-none focus:ring-2 focus:ring-[var(--blue)]"
                     />
                     <input
                       type="text"
                       placeholder="Answer B"
-                      className="w-full rounded-2xl border border-[var(--border)] bg-[var(--panel)] px-4 py-3 text-sm font-medium text-[var(--fg)] focus:outline-none focus:ring-2 focus:ring-[var(--blue)]"
+                      className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-[var(--fg)] focus:outline-none focus:ring-2 focus:ring-[var(--blue)]"
                     />
                     <input
                       type="text"
                       placeholder="Answer C"
-                      className="w-full rounded-2xl border border-[var(--border)] bg-[var(--panel)] px-4 py-3 text-sm font-medium text-[var(--fg)] focus:outline-none focus:ring-2 focus:ring-[var(--blue)]"
+                      className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-[var(--fg)] focus:outline-none focus:ring-2 focus:ring-[var(--blue)]"
                     />
                     <input
                       type="text"
                       placeholder="Answer D"
-                      className="w-full rounded-2xl border border-[var(--border)] bg-[var(--panel)] px-4 py-3 text-sm font-medium text-[var(--fg)] focus:outline-none focus:ring-2 focus:ring-[var(--blue)]"
+                      className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-[var(--fg)] focus:outline-none focus:ring-2 focus:ring-[var(--blue)]"
                     />
                   </div>
                 </div>
@@ -521,25 +658,32 @@ export default function ContentPage() {
             </div>
           </section>
 
-          <section className="panel p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--fg)]/60">
-                  Materials vault
-                </p>
-                <h2 className="font-display text-2xl font-semibold">
-                  Ready to send
-                </h2>
+          <section className="dashboard-section enter rounded-[32px] p-6">
+            <div className="absolute left-4 top-4 h-24 w-24 rounded-full bg-[var(--aura-blue)] blur-3xl" />
+            <div className="relative flex items-center justify-between">
+              <div className="flex items-start gap-4">
+                <SectionMarker
+                  Icon={VaultIcon}
+                  toneClass="text-[var(--blue)]"
+                />
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--fg)]/60">
+                    Materials vault
+                  </p>
+                  <h2 className="font-display text-2xl font-semibold">
+                    Ready to send
+                  </h2>
+                </div>
               </div>
               <span className="chip bg-[var(--green)] text-[var(--fg)]">
                 Updated
               </span>
             </div>
-            <div className="mt-5 grid gap-3 md:grid-cols-2">
+            <div className="relative mt-5 grid gap-3 md:grid-cols-2">
               {materials.map((item) => (
                 <div
                   key={item.title}
-                  className="flex items-center justify-between rounded-2xl border border-[var(--border)] bg-[var(--panel-2)] px-4 py-3 text-sm font-medium"
+                  className="interactive-tile flex items-center justify-between rounded-[24px] border border-[var(--border)] bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] px-4 py-3 text-sm font-medium"
                 >
                   <div>
                     <p className="font-medium">{item.title}</p>

@@ -20,10 +20,10 @@ export default async function StudentClassCategoryPage({ params }) {
   const learners = getStudentsByClassCategory(normalizedCategory);
 
   return (
-    <div className="min-h-screen px-4 py-6 sm:px-6 sm:py-8">
-      <div className="grid w-full gap-6 lg:grid-cols-[280px_1fr]">
+    <div className="app-shell">
+      <div className="dashboard-layout">
         <SideFoot active="Students" />
-        <main className="space-y-6">
+        <main className="dashboard-main space-y-6">
           <section className="glass overflow-hidden rounded-[32px] border border-[var(--border)] p-6 shadow-[var(--shadow)]">
             <div
               className="rounded-[28px] p-5 text-[var(--fg)]"
@@ -83,34 +83,33 @@ export default async function StudentClassCategoryPage({ params }) {
               </span>
             </div>
 
-            {learners.length > 0 ? (
-              <div className="grid gap-4 sm:grid-cols-2 2xl:grid-cols-3">
-                {learners.map((student) => (
-                  <StudentCard key={student.id} student={student} />
-                ))}
-              </div>
-            ) : (
-              <div className="rounded-[30px] border border-dashed border-[var(--border)] bg-[var(--panel)]/70 px-6 py-14 text-center">
-                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[var(--fg)]/52">
-                  No learners in this category yet
-                </p>
-                <p className="mx-auto mt-3 max-w-xl text-sm font-medium leading-6 text-[var(--fg)]/65">
-                  {categoryConfig.title} is ready for learners. Use the category
-                  cards to move across the full A, B, C, and D roster map.
-                </p>
-                <div className="mt-5 flex flex-wrap justify-center gap-2">
-                  {classCategoryCatalog.map((categoryItem) => (
-                    <Link
-                      key={categoryItem.id}
-                      href={`/students/classes/${categoryItem.id}`}
-                      className="rounded-full border border-[var(--border)] bg-[var(--panel)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em]"
-                    >
-                      {categoryItem.id}
-                    </Link>
+            {learners.length > 0
+              ? <div className="grid gap-4 sm:grid-cols-2 2xl:grid-cols-3">
+                  {learners.map((student) => (
+                    <StudentCard key={student.id} student={student} />
                   ))}
                 </div>
-              </div>
-            )}
+              : <div className="rounded-[30px] border border-dashed border-[var(--border)] bg-[var(--panel)]/70 px-6 py-14 text-center">
+                  <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[var(--fg)]/52">
+                    No learners in this category yet
+                  </p>
+                  <p className="mx-auto mt-3 max-w-xl text-sm font-medium leading-6 text-[var(--fg)]/65">
+                    {categoryConfig.title} is ready for learners. Use the
+                    category cards to move across the full A, B, C, and D roster
+                    map.
+                  </p>
+                  <div className="mt-5 flex flex-wrap justify-center gap-2">
+                    {classCategoryCatalog.map((categoryItem) => (
+                      <Link
+                        key={categoryItem.id}
+                        href={`/students/classes/${categoryItem.id}`}
+                        className="rounded-full border border-[var(--border)] bg-[var(--panel)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em]"
+                      >
+                        {categoryItem.id}
+                      </Link>
+                    ))}
+                  </div>
+                </div>}
           </section>
         </main>
       </div>

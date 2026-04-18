@@ -3,13 +3,13 @@
 import { useEffect, useState } from "react";
 import SideFoot from "../components/sideFoot";
 import StudentCard from "../components/studentCard";
-import ClassCategoryCard from "./components/classCategoryCard";
 import {
   activeStudentsCount,
   classCategoryCatalog,
   getStudentsByClassCategory,
   students,
 } from "../data/students";
+import ClassCategoryCard from "./components/classCategoryCard";
 
 const DRAFT_KEY = "goTeach.communicationDraft";
 
@@ -62,7 +62,7 @@ export default function StudentsPage() {
   }, []);
 
   const filteredStudents = students.filter((student) =>
-    matchesStudent(student, searchTerm)
+    matchesStudent(student, searchTerm),
   );
   const classCategories = classCategoryCatalog.map((category) => ({
     ...category,
@@ -82,7 +82,7 @@ export default function StudentsPage() {
     }
 
     setSelectedIds((current) =>
-      current.includes(studentId) ? current : [...current, studentId]
+      current.includes(studentId) ? current : [...current, studentId],
     );
     setComposeState("Recipient updated");
   };
@@ -109,10 +109,10 @@ export default function StudentsPage() {
   };
 
   return (
-    <div className="min-h-screen px-4 py-6 sm:px-6 sm:py-8">
-      <div className="grid w-full gap-6 lg:grid-cols-[280px_1fr]">
+    <div className="app-shell">
+      <div className="dashboard-layout">
         <SideFoot active="Students" />
-        <main className="space-y-6">
+        <main className="dashboard-main space-y-6">
           <section className="glass rounded-[28px] p-6">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
@@ -123,7 +123,8 @@ export default function StudentsPage() {
                   Learner outreach
                 </h1>
                 <p className="mt-2 max-w-2xl text-sm font-medium text-[var(--fg)]/70">
-                  Search the roster, choose recipients from the dropdown, and keep all learner communication in one place.
+                  Search the roster, choose recipients from the dropdown, and
+                  keep all learner communication in one place.
                 </p>
               </div>
               <span className="chip bg-[var(--green)] text-[var(--fg)]">
@@ -165,7 +166,9 @@ export default function StudentsPage() {
                           <p className="font-semibold">{option.label}</p>
                           <p
                             className={`text-xs ${
-                              scope === option.id ? "text-white/75" : "text-[var(--fg)]/60"
+                              scope === option.id
+                                ? "text-white/75"
+                                : "text-[var(--fg)]/60"
                             }`}
                           >
                             {option.detail}
@@ -222,29 +225,30 @@ export default function StudentsPage() {
                     </span>
                   </div>
                   <div className="mt-3 flex flex-wrap gap-2">
-                    {selectedIds.length > 0 ? (
-                      selectedIds.map((studentId) => {
-                        const learner = students.find((student) => student.id === studentId);
-                        if (!learner) {
-                          return null;
-                        }
+                    {selectedIds.length > 0
+                      ? selectedIds.map((studentId) => {
+                          const learner = students.find(
+                            (student) => student.id === studentId,
+                          );
+                          if (!learner) {
+                            return null;
+                          }
 
-                        return (
-                          <button
-                            key={studentId}
-                            type="button"
-                            onClick={() => removeSelectedStudent(studentId)}
-                            className="rounded-full border border-[var(--border)] bg-[var(--panel-2)] px-3 py-2 text-xs font-semibold"
-                          >
-                            {learner.name} ×
-                          </button>
-                        );
-                      })
-                    ) : (
-                      <p className="text-sm font-medium text-[var(--fg)]/55">
-                        Use the search bar and dropdown menu to add recipients.
-                      </p>
-                    )}
+                          return (
+                            <button
+                              key={studentId}
+                              type="button"
+                              onClick={() => removeSelectedStudent(studentId)}
+                              className="rounded-full border border-[var(--border)] bg-[var(--panel-2)] px-3 py-2 text-xs font-semibold"
+                            >
+                              {learner.name} ×
+                            </button>
+                          );
+                        })
+                      : <p className="text-sm font-medium text-[var(--fg)]/55">
+                          Use the search bar and dropdown menu to add
+                          recipients.
+                        </p>}
                   </div>
                 </div>
               </div>
@@ -277,7 +281,9 @@ export default function StudentsPage() {
                       <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--fg)]/55">
                         {item.label}
                       </p>
-                      <p className="mt-2 text-2xl font-semibold">{item.value}</p>
+                      <p className="mt-2 text-2xl font-semibold">
+                        {item.value}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -291,7 +297,11 @@ export default function StudentsPage() {
                 />
 
                 <div className="mt-4 flex flex-wrap gap-3">
-                  <button type="button" onClick={handleSend} className="btn btn-primary">
+                  <button
+                    type="button"
+                    onClick={handleSend}
+                    className="btn btn-primary"
+                  >
                     Send to learners
                   </button>
                   <button

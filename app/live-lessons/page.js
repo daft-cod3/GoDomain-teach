@@ -44,10 +44,10 @@ export default function LiveLessonsPage() {
   const activeSession = liveSessions[0];
 
   return (
-    <div className="min-h-screen px-4 py-6 sm:px-6 sm:py-8">
-      <div className="grid w-full gap-6 lg:grid-cols-[280px_1fr]">
+    <div className="app-shell">
+      <div className="dashboard-layout">
         <SideFoot active="Live Lessons" />
-        <main className="space-y-6">
+        <main className="dashboard-main space-y-6">
           <section className="glass overflow-hidden rounded-[28px] p-6">
             <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
               <div>
@@ -58,14 +58,23 @@ export default function LiveLessonsPage() {
                   Student live classroom
                 </h1>
                 <p className="mt-3 max-w-2xl text-sm font-medium leading-7 text-[var(--fg)]/72">
-                  Host theory drills, live demonstrations, and workshop walkthroughs for students in one dedicated lesson hub.
+                  Host theory drills, live demonstrations, and workshop
+                  walkthroughs for students in one dedicated lesson hub.
                 </p>
 
                 <div className="mt-6 grid gap-4 sm:grid-cols-3">
                   {[
                     { label: "Live rooms", value: "2", tone: "var(--blue)" },
-                    { label: "Students waiting", value: "44", tone: "var(--green)" },
-                    { label: "Next session", value: "6:00 PM", tone: "var(--amber)" },
+                    {
+                      label: "Students waiting",
+                      value: "44",
+                      tone: "var(--green)",
+                    },
+                    {
+                      label: "Next session",
+                      value: "6:00 PM",
+                      tone: "var(--amber)",
+                    },
                   ].map((item) => (
                     <div
                       key={item.label}
@@ -75,7 +84,9 @@ export default function LiveLessonsPage() {
                       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-950/70">
                         {item.label}
                       </p>
-                      <p className="mt-2 text-3xl font-semibold">{item.value}</p>
+                      <p className="mt-2 text-3xl font-semibold">
+                        {item.value}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -110,13 +121,17 @@ export default function LiveLessonsPage() {
                     <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
                       Cohort
                     </p>
-                    <p className="mt-2 text-lg font-semibold">{activeSession.cohort}</p>
+                    <p className="mt-2 text-lg font-semibold">
+                      {activeSession.cohort}
+                    </p>
                   </div>
                   <div className="rounded-3xl border border-white/20 bg-white/10 p-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
                       Host
                     </p>
-                    <p className="mt-2 text-lg font-semibold">{activeSession.host}</p>
+                    <p className="mt-2 text-lg font-semibold">
+                      {activeSession.host}
+                    </p>
                   </div>
                 </div>
 
@@ -185,13 +200,17 @@ export default function LiveLessonsPage() {
                         <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--fg)]/55">
                           Attendees
                         </p>
-                        <p className="mt-2 text-xl font-semibold">{session.attendees}</p>
+                        <p className="mt-2 text-xl font-semibold">
+                          {session.attendees}
+                        </p>
                       </div>
                       <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-3">
                         <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--fg)]/55">
                           Host
                         </p>
-                        <p className="mt-2 text-xl font-semibold">{session.host}</p>
+                        <p className="mt-2 text-xl font-semibold">
+                          {session.host}
+                        </p>
                       </div>
                       <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-3">
                         <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--fg)]/55">

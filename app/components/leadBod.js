@@ -1,4 +1,4 @@
-const leaders = [
+export const teacherLeaders = [
   { username: "@jane.wambui", points: 980 },
   { username: "@peter.odhiambo", points: 920 },
   { username: "@lydia.mwende", points: 890 },
@@ -6,7 +6,7 @@ const leaders = [
   { username: "@brenda.k", points: 840 },
 ];
 
-const maxPoints = Math.max(...leaders.map((leader) => leader.points), 1);
+const maxPoints = Math.max(...teacherLeaders.map((leader) => leader.points), 1);
 
 export default function LeadBod() {
   return (
@@ -26,7 +26,7 @@ export default function LeadBod() {
       </div>
 
       <div className="mt-5 space-y-3">
-        {leaders.map((leader, index) => (
+        {teacherLeaders.map((leader, index) => (
           <div
             key={leader.username}
             className="rounded-2xl border border-[var(--border)] bg-[var(--panel-2)] px-4 py-4 text-sm font-medium"

@@ -1,12 +1,12 @@
-import SideFoot from "./components/sideFoot";
 import LeadBod from "./components/leadBod";
+import SideFoot from "./components/sideFoot";
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
-      <div className="grid w-full gap-6 px-6 py-8 lg:grid-cols-[280px_1fr]">
+    <div className="app-shell">
+      <div className="dashboard-layout">
         <SideFoot active="Overview" />
-        <main className="space-y-8">
+        <main className="dashboard-main space-y-8">
           <section
             className="enter panel p-6 hover-lift"
             style={{ animationDelay: "40ms" }}
@@ -20,7 +20,8 @@ export default function Home() {
                   Teacher overview
                 </h1>
                 <p className="mt-2 max-w-2xl text-sm font-medium text-[var(--fg)]/70">
-                  Monitor student progress, lesson delivery, and communications from one streamlined dashboard.
+                  Monitor student progress, lesson delivery, and communications
+                  from one streamlined dashboard.
                 </p>
               </div>
               <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel-2)] p-4 text-center shadow-[var(--shadow-tight)]">
@@ -35,7 +36,11 @@ export default function Home() {
             </div>
             <div className="mt-6 grid gap-4 md:grid-cols-3">
               {[
-                { label: "Active learners", value: "84", accent: "var(--panel-2)" },
+                {
+                  label: "Active learners",
+                  value: "84",
+                  accent: "var(--panel-2)",
+                },
                 { label: "Tests booked", value: "12", accent: "var(--blue)" },
                 { label: "New messages", value: "31", accent: "var(--green)" },
               ].map((stat) => (
@@ -63,16 +68,15 @@ export default function Home() {
             className="enter grid gap-6 lg:grid-cols-[1fr_1fr]"
             style={{ animationDelay: "260ms" }}
           >
-            <div
-              id="materials"
-              className="panel p-6 hover-lift"
-            >
+            <div id="materials" className="panel p-6 hover-lift">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--fg)]/60">
                     Materials overview
                   </p>
-                  <h2 className="font-display text-3xl font-semibold">Learning kit</h2>
+                  <h2 className="font-display text-3xl font-semibold">
+                    Learning kit
+                  </h2>
                 </div>
                 <span className="chip bg-[var(--blue)] text-white">
                   42 items
@@ -107,11 +111,11 @@ export default function Home() {
                   <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/60">
                     Direct contact
                   </p>
-                  <h2 className="font-display text-3xl font-semibold">Message lane</h2>
+                  <h2 className="font-display text-3xl font-semibold">
+                    Message lane
+                  </h2>
                 </div>
-                <span className="chip border-white text-white">
-                  6 live
-                </span>
+                <span className="chip border-white text-white">6 live</span>
               </div>
               <div className="mt-6 space-y-4">
                 {[

@@ -13,10 +13,10 @@ export default async function StudentProfile({ params }) {
   }
 
   return (
-    <div className="min-h-screen px-6 py-8">
-      <div className="grid w-full gap-6 lg:grid-cols-[280px_1fr]">
+    <div className="app-shell">
+      <div className="dashboard-layout">
         <SideFoot active="Students" />
-        <main className="flex w-full flex-col gap-8">
+        <main className="dashboard-main flex w-full flex-col gap-8">
           <div className="flex items-center justify-between">
             <Link href="/students" className="btn btn-ghost">
               Back to students

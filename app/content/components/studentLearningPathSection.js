@@ -8,13 +8,13 @@ import {
 } from "../../lib/contentStudioStore";
 
 const inputClass =
-  "w-full rounded-2xl border border-[var(--border)] bg-[var(--panel)]/85 px-4 py-3 text-sm font-medium text-[var(--fg)] placeholder:text-[var(--fg)]/45 focus:outline-none focus:ring-2 focus:ring-[var(--blue)]";
+  "field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-[var(--fg)] placeholder:text-[var(--fg)]/45 focus:outline-none focus:ring-2 focus:ring-[var(--blue)]";
 
 const textareaClass =
-  "min-h-[148px] w-full rounded-[24px] border border-[var(--border)] bg-[var(--panel)]/85 px-4 py-4 text-sm font-medium text-[var(--fg)] placeholder:text-[var(--fg)]/45 focus:outline-none focus:ring-2 focus:ring-[var(--blue)]";
+  "field-shell min-h-[148px] w-full rounded-[24px] px-4 py-4 text-sm font-medium text-[var(--fg)] placeholder:text-[var(--fg)]/45 focus:outline-none focus:ring-2 focus:ring-[var(--blue)]";
 
 const toolButtonClass =
-  "rounded-full border border-[var(--border)] bg-[var(--panel)]/80 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/72 hover:-translate-y-0.5 hover:shadow-[var(--shadow-tight)]";
+  "rounded-full border border-[var(--border)] bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/72 hover:-translate-y-1 hover:shadow-[var(--shadow-tight)]";
 
 const unitTones = [
   {
@@ -463,10 +463,10 @@ export default function StudentLearningPathSection() {
   const hiddenLessons = readUnitCount(units, "Hidden");
 
   return (
-    <section className="relative overflow-hidden rounded-[34px] border border-[var(--border)] bg-[linear-gradient(135deg,rgba(255,255,255,0.84),rgba(255,255,255,0.48))] px-6 py-6 shadow-[var(--shadow)] backdrop-blur-2xl sm:px-8">
-      <div className="float-soft absolute left-8 top-8 h-28 w-28 rounded-full bg-[rgba(52,168,83,0.14)] blur-3xl" />
-      <div className="absolute right-10 top-10 h-24 w-24 rounded-full bg-[rgba(37,99,235,0.12)] blur-3xl" />
-      <div className="absolute bottom-0 right-16 h-36 w-36 rounded-full bg-[rgba(219,39,119,0.08)] blur-3xl" />
+    <section className="dashboard-section relative rounded-[34px] px-6 py-6 shadow-[var(--shadow)] sm:px-8">
+      <div className="float-soft absolute left-8 top-8 h-28 w-28 rounded-full bg-[var(--aura-green)] blur-3xl" />
+      <div className="absolute right-10 top-10 h-24 w-24 rounded-full bg-[var(--aura-blue)] blur-3xl" />
+      <div className="absolute bottom-0 right-16 h-36 w-36 rounded-full bg-[var(--aura-rose)] blur-3xl" />
 
       <div className="relative">
         <div className="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
@@ -517,7 +517,7 @@ export default function StudentLearningPathSection() {
                   GoDomain learning flow
                 </h3>
               </div>
-              <span className="chip bg-[var(--panel)]/82 text-[var(--fg)]">
+              <span className="chip bg-[var(--panel-strong)] text-[var(--fg)]">
                 {openLessons} open
               </span>
             </div>
@@ -534,13 +534,13 @@ export default function StudentLearningPathSection() {
                     className={`rounded-full border px-4 py-3 text-left text-sm font-semibold shadow-[var(--shadow-tight)] ${
                       isActive
                         ? "scale-[1.03] text-white ring-2 ring-white/45"
-                        : "bg-[var(--panel)]/78 text-[var(--fg)] hover:-translate-y-0.5"
+                        : "bg-[var(--panel-strong)] text-[var(--fg)] hover:-translate-y-1"
                     }`}
                     style={{
                       borderColor: isActive ? unit.tone.solid : "var(--border)",
                       background: isActive
                         ? `linear-gradient(135deg, ${unit.tone.solid}, rgba(15, 23, 42, 0.8))`
-                        : "rgba(255,255,255,0.74)",
+                        : "linear-gradient(180deg, var(--panel-strong), var(--panel-2))",
                     }}
                   >
                     <span className="block text-[10px] uppercase tracking-[0.2em] opacity-75">
@@ -553,7 +553,7 @@ export default function StudentLearningPathSection() {
             </div>
 
             <div className="mt-4 grid gap-3 md:grid-cols-[1.1fr_0.9fr]">
-              <div className="rounded-[24px] border border-[var(--border)] bg-[var(--panel)]/72 px-4 py-4 shadow-[var(--shadow-tight)]">
+              <div className="rounded-[24px] border border-[var(--border)] bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] px-4 py-4 shadow-[var(--shadow-tight)]">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--fg)]/56">
                   Currently editing
                 </p>
@@ -564,7 +564,7 @@ export default function StudentLearningPathSection() {
                   {currentLesson.sessionLabel} | {currentLesson.title}
                 </p>
               </div>
-              <div className="rounded-[24px] border border-[var(--border)] bg-[var(--panel)]/72 px-4 py-4 shadow-[var(--shadow-tight)]">
+              <div className="rounded-[24px] border border-[var(--border)] bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] px-4 py-4 shadow-[var(--shadow-tight)]">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--fg)]/56">
                   Editor status
                 </p>
@@ -577,7 +577,7 @@ export default function StudentLearningPathSection() {
             <section
               className="enter mt-6 overflow-hidden rounded-[28px] border p-4 sm:p-5"
               style={{
-                background: `linear-gradient(135deg, ${currentUnit.tone.soft}, rgba(255,255,255,0.08))`,
+                background: `linear-gradient(135deg, ${currentUnit.tone.soft}, var(--panel-deep))`,
                 borderColor: currentUnit.tone.line,
                 boxShadow: `0 28px 60px -40px ${currentUnit.tone.glow}`,
               }}
@@ -615,7 +615,7 @@ export default function StudentLearningPathSection() {
                 <div
                   className="absolute bottom-7 left-1/2 top-6 w-[3px] -translate-x-1/2 rounded-full"
                   style={{
-                    background: `linear-gradient(180deg, ${currentUnit.tone.line}, rgba(15, 23, 42, 0.08))`,
+                    background: `linear-gradient(180deg, ${currentUnit.tone.line}, var(--panel-deep))`,
                   }}
                 />
 
@@ -645,8 +645,8 @@ export default function StudentLearningPathSection() {
                           background: selected
                             ? `linear-gradient(135deg, ${currentUnit.tone.solid}, rgba(15, 23, 42, 0.82))`
                             : isOpen
-                              ? "rgba(255,255,255,0.86)"
-                              : "rgba(229,231,235,0.82)",
+                              ? "linear-gradient(180deg, var(--panel-strong), var(--panel-2))"
+                              : "linear-gradient(180deg, var(--panel-2), var(--panel-3))",
                           borderColor: selected
                             ? currentUnit.tone.solid
                             : currentUnit.tone.line,
@@ -662,8 +662,8 @@ export default function StudentLearningPathSection() {
                       <div
                         className={`mt-3 rounded-[22px] border px-4 py-3 text-center shadow-[var(--shadow-tight)] ${
                           selected
-                            ? "bg-[var(--panel)]/88"
-                            : "bg-[var(--panel)]/52 backdrop-blur-md"
+                            ? "bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))]"
+                            : "bg-[linear-gradient(180deg,var(--panel),var(--panel-deep))] backdrop-blur-md"
                         }`}
                         style={{
                           borderColor: selected
@@ -683,7 +683,7 @@ export default function StudentLearningPathSection() {
                             borderColor: currentUnit.tone.line,
                             backgroundColor: selected
                               ? currentUnit.tone.soft
-                              : "rgba(255,255,255,0.65)",
+                              : "var(--panel-strong)",
                           }}
                         >
                           {lesson.access}
@@ -707,7 +707,7 @@ export default function StudentLearningPathSection() {
                 </h3>
               </div>
               <div className="flex flex-wrap gap-2">
-                <span className="chip bg-[var(--panel)]/85 text-[var(--fg)]">
+                <span className="chip bg-[var(--panel-strong)] text-[var(--fg)]">
                   {editorStatus}
                 </span>
                 <span
@@ -716,14 +716,14 @@ export default function StudentLearningPathSection() {
                 >
                   {currentLesson.sessionLabel}
                 </span>
-                <span className="chip bg-[var(--panel)]/85 text-[var(--fg)]">
+                <span className="chip bg-[var(--panel-strong)] text-[var(--fg)]">
                   {currentLesson.period}
                 </span>
               </div>
             </div>
 
             <div className="mt-5 grid gap-4">
-              <div className="rounded-[26px] border border-[var(--border)] bg-[var(--panel)]/58 p-4">
+              <div className="rounded-[26px] border border-[var(--border)] bg-[linear-gradient(180deg,var(--panel),var(--panel-deep))] p-4 backdrop-blur-xl">
                 <p className="text-sm font-semibold">Unit settings</p>
                 <div className="mt-4 grid gap-3">
                   <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/58">
@@ -785,7 +785,7 @@ export default function StudentLearningPathSection() {
                 </div>
               </div>
 
-              <div className="rounded-[26px] border border-[var(--border)] bg-[var(--panel)]/58 p-4">
+              <div className="rounded-[26px] border border-[var(--border)] bg-[linear-gradient(180deg,var(--panel),var(--panel-deep))] p-4 backdrop-blur-xl">
                 <div className="flex items-center justify-between gap-3">
                   <p className="text-sm font-semibold">Lesson controls</p>
                   <div className="flex gap-2">
@@ -880,7 +880,7 @@ export default function StudentLearningPathSection() {
                 </div>
               </div>
 
-              <div className="rounded-[26px] border border-[var(--border)] bg-[var(--panel)]/58 p-4">
+              <div className="rounded-[26px] border border-[var(--border)] bg-[linear-gradient(180deg,var(--panel),var(--panel-deep))] p-4 backdrop-blur-xl">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div>
                     <p className="text-sm font-semibold">Content builder</p>
@@ -929,7 +929,7 @@ export default function StudentLearningPathSection() {
                       className={`shrink-0 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] ${
                         blockIndex === safeBlockIndex
                           ? "border-transparent text-white shadow-[var(--shadow-tight)]"
-                          : "border-[var(--border)] bg-[var(--panel)]/82 text-[var(--fg)]/68"
+                          : "border-[var(--border)] bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] text-[var(--fg)]/68"
                       }`}
                       style={
                         blockIndex === safeBlockIndex
@@ -983,7 +983,7 @@ export default function StudentLearningPathSection() {
                   ].map((shortcut) => (
                     <div
                       key={shortcut.label}
-                      className="rounded-[22px] border border-[var(--border)] bg-[var(--panel)]/40 px-4 py-3"
+                      className="rounded-[22px] border border-[var(--border)] bg-[linear-gradient(180deg,var(--panel),var(--panel-deep))] px-4 py-3"
                     >
                       <div className="flex flex-wrap gap-2">
                         {shortcut.keys.map((key) => (
