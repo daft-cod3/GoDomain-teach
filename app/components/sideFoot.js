@@ -319,7 +319,7 @@ export default function SideFoot({ active = "Overview" }) {
         <aside
           className={`nav-shell ${
             open ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"
-          } fixed inset-y-0 left-0 z-20 flex h-full w-[min(84vw,21rem)] flex-col overflow-y-auto rounded-none px-4 py-4 duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:sticky md:top-4 md:h-[calc(100vh-2rem)] md:w-full md:translate-x-0 md:rounded-[30px] md:px-3 md:py-3 md:opacity-100 xl:top-8 xl:h-[calc(100vh-4rem)] xl:rounded-[32px] xl:px-5 xl:py-5`}
+          } fixed inset-y-0 left-0 z-20 flex h-full w-[min(84vw,21rem)] flex-col overflow-y-auto rounded-none px-4 py-4 duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:bottom-auto md:left-6 md:top-6 md:z-30 md:h-[calc(100vh-3rem)] md:w-[6.25rem] md:translate-x-0 md:rounded-[30px] md:px-3 md:py-3 md:opacity-100 xl:left-8 xl:top-8 xl:h-[calc(100vh-4rem)] xl:w-[18.5rem] xl:rounded-[32px] xl:px-5 xl:py-5`}
         >
           <div className="flex h-full flex-col gap-4">
             <div className="rounded-[28px] border border-[var(--border)] bg-[linear-gradient(150deg,var(--panel-strong),var(--panel-2))] p-4 shadow-[var(--shadow-tight)] backdrop-blur-xl xl:p-5">

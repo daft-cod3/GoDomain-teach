@@ -21,7 +21,7 @@ export default async function StudentProfile({ params }) {
             <Link href="/students" className="btn btn-ghost">
               Back to students
             </Link>
-            <span className="chip bg-[var(--green)] text-[var(--fg)]">
+            <span className="chip bg-(--green) text-foreground">
               Profile loaded
             </span>
           </div>

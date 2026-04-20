@@ -284,17 +284,17 @@ export default function SettingPanel() {
           <div className="space-y-5">
             <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
               <div className="flex max-w-3xl items-start gap-4">
-                <span className="icon-shell h-12 w-12 shrink-0 text-[var(--blue)] shadow-[var(--shadow-tight)]">
+                <span className="icon-shell h-12 w-12 shrink-0 text-(--blue) shadow-(--shadow-tight)">
                   <PaletteIcon className="h-5 w-5" />
                 </span>
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--fg)]/60">
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-(--fg)/60">
                     Settings
                   </p>
                   <h1 className="font-display text-3xl font-semibold sm:text-4xl">
                     Preferences
                   </h1>
-                  <p className="mt-3 max-w-2xl text-sm font-medium leading-6 text-[var(--muted)]">
+                  <p className="mt-3 max-w-2xl text-sm font-medium leading-6 text-(--muted)">
                     Tune the dashboard atmosphere, account identity, alerts, and
                     security details from one polished control panel.
                   </p>
@@ -302,10 +302,10 @@ export default function SettingPanel() {
               </div>
 
               <div className="flex flex-wrap items-center gap-2">
-                <span className="chip bg-[var(--green)] text-[var(--fg)]">
+                <span className="chip bg-(--green)] text-foreground">
                   Saved
                 </span>
-                <span className="chip bg-[var(--panel-strong)] text-[var(--fg)]">
+                <span className="chip bg-(--panel-strong) text-foreground">
                   {getThemeLabel(theme)}
                 </span>
               </div>
@@ -315,7 +315,7 @@ export default function SettingPanel() {
               {accountHighlights.map((item) => (
                 <span
                   key={item}
-                  className="chip bg-[var(--panel-strong)] text-[var(--fg)]"
+                  className="chip bg-(--panel-strong) text-foreground"
                 >
                   {item}
                 </span>
@@ -326,24 +326,24 @@ export default function SettingPanel() {
           <button
             type="button"
             onClick={toggleThemeMode}
-            className="interactive-tile rounded-[30px] border border-[rgba(37,99,235,0.18)] bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] p-5 text-left shadow-[var(--shadow-tight)]"
+            className="interactive-tile rounded-[30px] border border-[rgba(37,99,235,0.18)] bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] p-5 text-left shadow-(--shadow-tight)"
           >
             <div className="flex items-start justify-between gap-4">
               <span
-                className={`icon-shell h-12 w-12 shadow-[var(--shadow-tight)] ${activeTheme.toneClass}`}
+                className={`icon-shell h-12 w-12 shadow-(--shadow-tight) ${activeTheme.toneClass}`}
               >
                 <ActiveThemeIcon className="h-5 w-5" />
               </span>
-              <span className="chip bg-[var(--blue)] text-white">
+              <span className="chip bg-(--blue) text-white">
                 {activeTheme.label}
               </span>
             </div>
 
-            <p className="mt-5 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--fg)]/56">
+            <p className="mt-5 text-xs font-semibold uppercase tracking-[0.24em] text-(--fg)/56">
               Theme toggle
             </p>
             <p className="mt-2 text-2xl font-semibold">Cycle interface theme</p>
-            <p className="mt-3 text-sm font-medium leading-6 text-[var(--muted)]">
+            <p className="mt-3 text-sm font-medium leading-6 text-(--muted)">
               Replace the old multi-card selector with one SVG control that
               cycles light, dark, and system modes while keeping the current
               theme label visible.
@@ -360,7 +360,7 @@ export default function SettingPanel() {
                     className={`inline-flex h-10 w-10 items-center justify-center rounded-2xl border ${
                       isActive
                         ? "border-transparent bg-[linear-gradient(135deg,var(--blue),var(--blue-2))] text-white"
-                        : "border-[var(--border)] bg-[var(--panel)] text-[var(--fg)]/66"
+                        : "border-(--border) bg-(--panel) text-(--fg)/66"
                     }`}
                   >
                     <Icon className="h-4 w-4" />
@@ -369,20 +369,20 @@ export default function SettingPanel() {
               })}
             </div>
 
-            <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--fg)]/56">
+            <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-(--fg)/56">
               Click to switch to {nextTheme.label}
             </p>
           </button>
 
           <div className="grid gap-3 md:grid-cols-3 xl:col-span-2">
             <div className="glass-soft rounded-3xl px-4 py-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--fg)]/58">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-(--fg)/58">
                 Active theme
               </p>
               <p className="mt-2 text-2xl font-semibold">{activeTheme.label}</p>
             </div>
             <div className="glass-soft rounded-3xl px-4 py-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--fg)]/58">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-(--fg)/58">
                 Alerts live
               </p>
               <p className="mt-2 text-2xl font-semibold">
@@ -390,7 +390,7 @@ export default function SettingPanel() {
               </p>
             </div>
             <div className="glass-soft rounded-3xl px-4 py-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--fg)]/58">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-(--fg)/58">
                 Security
               </p>
               <p className="mt-2 text-2xl font-semibold">Protected</p>
@@ -406,7 +406,7 @@ export default function SettingPanel() {
           <div className="relative">
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-start gap-4">
-                <span className="icon-shell h-12 w-12 text-[var(--blue)] shadow-[var(--shadow-tight)]">
+                <span className="icon-shell h-12 w-12 text-(--blue) shadow-(--shadow-tight)">
                   <UserIcon className="h-5 w-5" />
                 </span>
                 <div>
@@ -418,7 +418,7 @@ export default function SettingPanel() {
                   </p>
                 </div>
               </div>
-              <span className="chip bg-[var(--panel-strong)] text-[var(--fg)]">
+              <span className="chip bg-(--panel-strong) text-foreground">
                 Updated
               </span>
             </div>
@@ -426,7 +426,7 @@ export default function SettingPanel() {
             <div className="mt-5 rounded-[30px] bg-[linear-gradient(135deg,var(--blue),rgba(16,34,85,0.92))] p-5 text-white shadow-[0_24px_48px_rgba(29,78,216,0.24)]">
               <div className="flex flex-wrap items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-[22px] border border-white/16 bg-white/12 text-lg font-bold shadow-[var(--shadow-tight)]">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-[22px] border border-white/16 bg-white/12 text-lg font-bold shadow-(--shadow-tight)">
                     JW
                   </div>
                   <div>
@@ -459,7 +459,7 @@ export default function SettingPanel() {
                 <input
                   type="text"
                   defaultValue="Jane Wambui"
-                  className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-[var(--fg)]"
+                  className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-foreground"
                 />
               </label>
               <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-(--muted)">
@@ -467,7 +467,7 @@ export default function SettingPanel() {
                 <input
                   type="email"
                   defaultValue="jane@godomain.africa"
-                  className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-[var(--fg)]"
+                  className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-foreground"
                 />
               </label>
               <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-(--muted) md:col-span-2">
@@ -475,7 +475,7 @@ export default function SettingPanel() {
                 <input
                   type="text"
                   defaultValue="Westlands circuit and mock test group"
-                  className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-[var(--fg)]"
+                  className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-foreground"
                 />
               </label>
             </div>
@@ -488,7 +488,7 @@ export default function SettingPanel() {
           <div className="relative">
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-start gap-4">
-                <span className="icon-shell h-12 w-12 text-[var(--green)] shadow-[var(--shadow-tight)]">
+                <span className="icon-shell h-12 w-12 text-(--green) shadow-(--shadow-tight)">
                   <BellIcon className="h-5 w-5" />
                 </span>
                 <div>
@@ -500,7 +500,7 @@ export default function SettingPanel() {
                   </p>
                 </div>
               </div>
-              <span className="chip bg-[var(--green)] text-[var(--fg)]">
+              <span className="chip bg-(--green) text-foreground">
                 {enabledNotifications} live
               </span>
             </div>
@@ -520,8 +520,8 @@ export default function SettingPanel() {
                       <span
                         className={`icon-shell h-10 w-10 shrink-0 ${
                           item.enabled
-                            ? "text-[var(--blue)]"
-                            : "text-[var(--muted)]"
+                            ? "text-(--blue)"
+                            : "text-(--muted)"
                         }`}
                       >
                         <BellIcon className="h-4 w-4" />
@@ -541,7 +541,7 @@ export default function SettingPanel() {
                       className={`relative h-8 w-14 shrink-0 rounded-full border ${
                         item.enabled
                           ? "border-transparent bg-[linear-gradient(135deg,var(--blue),var(--blue-2))]"
-                          : "border-(--border) bg-[var(--panel-strong)]"
+                          : "border-(--border) bg-(--panel-strong)"
                       }`}
                     >
                       <span
@@ -565,7 +565,7 @@ export default function SettingPanel() {
           <div className="relative">
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-start gap-4">
-                <span className="icon-shell h-12 w-12 text-[var(--rose)] shadow-[var(--shadow-tight)]">
+                <span className="icon-shell h-12 w-12 text-(--rose) shadow-(--shadow-tight)">
                   <ShieldIcon className="h-5 w-5" />
                 </span>
                 <div>
@@ -577,7 +577,7 @@ export default function SettingPanel() {
                   </p>
                 </div>
               </div>
-              <span className="chip bg-[var(--panel-strong)] text-[var(--fg)]">
+              <span className="chip bg-(--panel-strong) text-foreground">
                 Protected
               </span>
             </div>
@@ -588,7 +588,7 @@ export default function SettingPanel() {
                 <input
                   type="password"
                   placeholder="********"
-                  className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-[var(--fg)] placeholder:text-[var(--fg)]/50"
+                  className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-foreground placeholder:text-(--fg)/50"
                 />
               </label>
               <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-(--muted)">
@@ -596,7 +596,7 @@ export default function SettingPanel() {
                 <input
                   type="password"
                   placeholder="********"
-                  className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-[var(--fg)] placeholder:text-[var(--fg)]/50"
+                  className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-foreground placeholder:text-(--fg)/50"
                 />
               </label>
             </div>
@@ -633,7 +633,7 @@ export default function SettingPanel() {
           <div className="relative">
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-start gap-4">
-                <span className="icon-shell h-12 w-12 text-[var(--amber)] shadow-[var(--shadow-tight)]">
+                <span className="icon-shell h-12 w-12 text-(--amber) shadow-(--shadow-tight)">
                   <PaletteIcon className="h-5 w-5" />
                 </span>
                 <div>
@@ -645,7 +645,7 @@ export default function SettingPanel() {
                   </p>
                 </div>
               </div>
-              <span className="chip bg-[var(--panel-strong)] text-[var(--fg)]">
+              <span className="chip bg-(--panel-strong) text-foreground">
                 {activeTheme.label}
               </span>
             </div>
@@ -661,7 +661,7 @@ export default function SettingPanel() {
                       {getThemeLabel(theme)}
                     </p>
                   </div>
-                  <span className="chip bg-[var(--blue)] text-white">
+                  <span className="chip bg-(--blue) text-white">
                     Synced
                   </span>
                 </div>
@@ -687,7 +687,7 @@ export default function SettingPanel() {
               {previewPills.map((item) => (
                 <span
                   key={item}
-                  className="chip bg-[var(--panel-strong)] text-[var(--fg)]"
+                  className="chip bg-(--panel-strong) text-foreground"
                 >
                   {item}
                 </span>

@@ -122,14 +122,14 @@ export default function CommunicationPanel({ students }) {
       <div className="glass-soft rounded-[28px] p-5">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--fg)]/60">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-(--fg)/60">
               Recipient picker
             </p>
-            <p className="mt-1 text-sm font-medium text-[var(--fg)]/72">
+            <p className="mt-1 text-sm font-medium text-(--fg)/72">
               {getScopeLabel(scope)}
             </p>
           </div>
-          <span className="chip bg-[var(--panel)] text-[var(--fg)]">
+          <span className="chip bg-(--panel) text-foreground">
             {recipientCount} recipients
           </span>
         </div>
@@ -144,8 +144,8 @@ export default function CommunicationPanel({ students }) {
               key={option.id}
               className={`rounded-2xl border px-3 py-3 text-xs font-semibold uppercase tracking-[0.12em] ${
                 scope === option.id
-                  ? "border-[var(--blue)] bg-[var(--blue)] text-white"
-                  : "border-[var(--border)] bg-[var(--panel)] text-[var(--fg)]"
+                  ? "border-(--blue) bg-(--blue) text-white"
+                  : "border-(--border) bg-(--panel) text-foreground"
               }`}
             >
               <input
@@ -161,14 +161,14 @@ export default function CommunicationPanel({ students }) {
           ))}
         </fieldset>
 
-        <label className="mt-4 block text-sm font-medium text-[var(--fg)]/80">
+        <label className="mt-4 block text-sm font-medium text-(--fg)/80">
           Search students
           <input
             type="search"
             value={searchTerm}
             onChange={(event) => setSearchTerm(event.target.value)}
             placeholder="Search by name, index, class, or program"
-            className="mt-2 w-full rounded-2xl border border-[var(--border)] bg-[var(--panel)] px-4 py-3 text-sm text-[var(--fg)] outline-none placeholder:text-[var(--fg)]/45 focus:ring-2 focus:ring-[var(--blue)]"
+            className="mt-2 w-full rounded-2xl border border-(--border) bg-(--panel) px-4 py-3 text-sm text-foreground outline-none placeholder:text-(--fg)/45 focus:ring-2 focus:ring-(--blue)"
           />
         </label>
 
@@ -176,36 +176,36 @@ export default function CommunicationPanel({ students }) {
           <button
             type="button"
             onClick={() => setMenuOpen((current) => !current)}
-            className="flex w-full items-center justify-between rounded-2xl border border-[var(--border)] bg-[var(--panel)] px-4 py-3 text-left text-sm font-semibold"
+            className="flex w-full items-center justify-between rounded-2xl border border-(--border) bg-(--panel) px-4 py-3 text-left text-sm font-semibold"
           >
             <span>
               {selectedIds.length > 0
                 ? `${selectedIds.length} students chosen`
                 : "Open student dropdown"}
             </span>
-            <span className="text-xs uppercase tracking-[0.16em] text-[var(--fg)]/55">
+            <span className="text-xs uppercase tracking-[0.16em] text-(--fg)/55">
               {menuOpen ? "Hide" : "Show"}
             </span>
           </button>
 
           {menuOpen ? (
-            <div className="absolute left-0 right-0 top-[calc(100%+0.75rem)] z-10 max-h-72 overflow-auto rounded-[24px] border border-[var(--border)] bg-[var(--panel)] p-3 shadow-[var(--shadow)]">
+            <div className="absolute left-0 right-0 top-[calc(100%+0.75rem)] z-10 max-h-72 overflow-auto rounded-3xl border border-(--border) bg-(--panel) p-3 shadow-(--shadow)">
               {filteredStudents.length > 0 ? (
                 <div className="space-y-2">
                   {filteredStudents.map((student) => (
                     <label
                       key={student.id}
-                      className="flex items-start gap-3 rounded-2xl border border-[var(--border)] bg-[var(--panel-2)] px-3 py-3 text-sm font-medium"
+                      className="flex items-start gap-3 rounded-2xl border border-(--border) bg-(--panel-2) px-3 py-3 text-sm font-medium"
                     >
                       <input
                         type="checkbox"
                         checked={selectedIds.includes(student.id)}
                         onChange={() => toggleStudent(student.id)}
-                        className="mt-1 h-4 w-4 accent-[var(--blue)]"
+                        className="mt-1 h-4 w-4 accent-(--blue)"
                       />
                       <span className="flex-1">
                         <span className="block font-semibold">{student.name}</span>
-                        <span className="mt-1 block text-xs text-[var(--fg)]/60">
+                        <span className="mt-1 block text-xs text-(--fg)/60">
                           {student.program} | {student.className}
                         </span>
                       </span>
@@ -213,7 +213,7 @@ export default function CommunicationPanel({ students }) {
                   ))}
                 </div>
               ) : (
-                <div className="rounded-2xl border border-dashed border-[var(--border)] px-4 py-8 text-center text-sm font-medium text-[var(--fg)]/60">
+                <div className="rounded-2xl border border-dashed border-(--border) px-4 py-8 text-center text-sm font-medium text-(--fg)/60">
                   No students match that search.
                 </div>
               )}
@@ -221,8 +221,8 @@ export default function CommunicationPanel({ students }) {
           ) : null}
         </div>
 
-        <div className="mt-4 rounded-[24px] border border-[var(--border)] bg-[var(--panel)]/80 p-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--fg)]/60">
+        <div className="mt-4 rounded-3xl border border-(--border) bg-(--panel)/80 p-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-(--fg)/60">
             Selected students
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
@@ -230,13 +230,13 @@ export default function CommunicationPanel({ students }) {
               selectedStudents.map((student) => (
                 <span
                   key={student.id}
-                  className="rounded-full border border-[var(--border)] bg-[var(--panel-2)] px-3 py-2 text-xs font-semibold"
+                  className="rounded-full border border-(--border) bg-(--panel-2) px-3 py-2 text-xs font-semibold"
                 >
                   {student.name}
                 </span>
               ))
             ) : (
-              <p className="text-sm font-medium text-[var(--fg)]/60">
+              <p className="text-sm font-medium text-(--fg)/60">
                 No names selected yet.
               </p>
             )}
@@ -245,7 +245,7 @@ export default function CommunicationPanel({ students }) {
       </div>
 
       <div className="glass-soft rounded-[28px] p-5">
-        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--fg)]/60">
+        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-(--fg)]60">
           Broadcast composer
         </p>
         <h2 className="mt-2 font-display text-2xl font-semibold">
@@ -256,7 +256,7 @@ export default function CommunicationPanel({ students }) {
           value={message}
           onChange={(event) => setMessage(event.target.value)}
           placeholder="Write a message to students, driving school groups, or automotive engineering cohorts..."
-          className="mt-4 w-full resize-none rounded-[24px] border border-[var(--border)] bg-[var(--panel)] px-4 py-4 text-sm font-medium text-[var(--fg)] outline-none placeholder:text-[var(--fg)]/45 focus:ring-2 focus:ring-[var(--blue)]"
+          className="mt-4 w-full resize-none rounded-3xl border border-(--border) bg-(--panel) px-4 py-4 text-sm font-medium text-foreground outline-none placeholder:text-(--fg)/45 focus:ring-2 focus:ring-(--blue)"
         />
         <div className="mt-4 flex flex-wrap gap-3">
           <button type="button" onClick={sendMessage} className="btn btn-primary">
@@ -268,20 +268,20 @@ export default function CommunicationPanel({ students }) {
         </div>
 
         <div className="mt-5 grid gap-3 md:grid-cols-[0.95fr_1.05fr]">
-          <div className="rounded-[24px] border border-[var(--border)] bg-[var(--panel)]/80 p-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--fg)]/60">
+          <div className="rounded-3xl border border-(--border) bg-(--panel)/80 p-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-(--fg)/60">
               Audience snapshot
             </p>
             <p className="mt-3 text-2xl font-semibold">{recipientCount}</p>
-            <p className="mt-1 text-sm font-medium text-[var(--fg)]/65">
+            <p className="mt-1 text-sm font-medium text-(--fg)/65">
               {getScopeLabel(scope)}
             </p>
           </div>
-          <div className="rounded-[24px] border border-[var(--border)] bg-[var(--panel)]/80 p-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--fg)]/60">
+          <div className="rounded-3xl border border-(--border) bg-(--panel)/80 p-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-(--fg)/60">
               Status
             </p>
-            <p className="mt-3 text-sm font-medium text-[var(--fg)]/72">
+            <p className="mt-3 text-sm font-medium text-(--fg)/72">
               {statusMessage}
             </p>
           </div>
