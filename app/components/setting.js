@@ -276,36 +276,31 @@ export default function SettingPanel() {
 
   return (
     <div className="flex w-full flex-col gap-6">
-      <section className="dashboard-section enter rounded-[34px] p-6 sm:p-7">
-        <div className="absolute -right-10 top-0 h-40 w-40 rounded-full bg-(--aura-blue) blur-3xl" />
-        <div className="absolute bottom-0 left-10 h-28 w-28 rounded-full bg-(--aura-green) blur-3xl" />
-
-        <div className="relative grid gap-6 xl:grid-cols-[minmax(0,1.12fr)_320px]">
-          <div className="space-y-5">
-            <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
+      <section className="card-elevated enter rounded-[28px] p-8">
+        <div className="relative grid gap-8 xl:grid-cols-[minmax(0,1.2fr)_350px]">
+          <div className="space-y-6">
+            <div className="flex flex-col gap-6 xl:flex-row xl:items-start xl:justify-between">
               <div className="flex max-w-3xl items-start gap-4">
-                <span className="icon-shell h-12 w-12 shrink-0 text-(--blue) shadow-(--shadow-tight)">
-                  <PaletteIcon className="h-5 w-5" />
+                <span className="student-avatar bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] text-white text-xl">
+                  ⚙️
                 </span>
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-(--fg)/60">
-                    Settings
-                  </p>
-                  <h1 className="font-display text-3xl font-semibold sm:text-4xl">
-                    Preferences
+                  <p className="section-title">Workspace</p>
+                  <h1 className="section-heading text-4xl">
+                    Settings & Preferences
                   </h1>
-                  <p className="mt-3 max-w-2xl text-sm font-medium leading-6 text-(--muted)">
-                    Tune the dashboard atmosphere, account identity, alerts, and
-                    security details from one polished control panel.
+                  <p className="mt-3 max-w-2xl text-base font-medium leading-relaxed text-[var(--muted)]">
+                    Customize your dashboard theme, notification preferences, security settings, and account details from one unified control center.
                   </p>
                 </div>
               </div>
 
               <div className="flex flex-wrap items-center gap-2">
-                <span className="chip bg-(--green)] text-foreground">
+                <span className="badge badge-success gap-2">
+                  <span className="inline-block w-2 h-2 rounded-full bg-white"></span>
                   Saved
                 </span>
-                <span className="chip bg-(--panel-strong) text-foreground">
+                <span className="badge gap-2">
                   {getThemeLabel(theme)}
                 </span>
               </div>
@@ -315,9 +310,9 @@ export default function SettingPanel() {
               {accountHighlights.map((item) => (
                 <span
                   key={item}
-                  className="chip bg-(--panel-strong) text-foreground"
+                  className="badge gap-1"
                 >
-                  {item}
+                  ✓ {item}
                 </span>
               ))}
             </div>
@@ -326,28 +321,30 @@ export default function SettingPanel() {
           <button
             type="button"
             onClick={toggleThemeMode}
-            className="interactive-tile rounded-[30px] border border-[rgba(37,99,235,0.18)] bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] p-5 text-left shadow-(--shadow-tight)"
+            className="lesson-card rounded-[20px] border-2 p-6 text-left hover:shadow-[var(--shadow-lg)] transition-all"
+            style={{ borderColor: activeTheme.toneClass ? "var(--primary)" : "var(--border)" }}
           >
-            <div className="flex items-start justify-between gap-4">
+            <div className="flex items-start justify-between gap-3 mb-4">
               <span
-                className={`icon-shell h-12 w-12 shadow-(--shadow-tight) ${activeTheme.toneClass}`}
+                className={`text-3xl`}
               >
-                <ActiveThemeIcon className="h-5 w-5" />
+                <ActiveThemeIcon className="h-6 w-6 text-[var(--primary)]" />
               </span>
-              <span className="chip bg-(--blue) text-white">
+              <span className="badge" style={{ background: activeTheme.toneClass ? "linear-gradient(135deg, var(--primary), var(--secondary))" : "" }}>
                 {activeTheme.label}
               </span>
             </div>
 
-            <p className="mt-5 text-xs font-semibold uppercase tracking-[0.24em] text-(--fg)/56">
-              Theme toggle
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)] mb-2">
+              Theme control
             </p>
-            <p className="mt-2 text-2xl font-semibold">Cycle interface theme</p>
-            <p className="mt-3 text-sm font-medium leading-6 text-(--muted)">
-              Replace the old multi-card selector with one SVG control that
-              cycles light, dark, and system modes while keeping the current
-              theme label visible.
+            <p className="text-xl font-bold mb-2">Switch Theme</p>
+            <p className="text-sm font-medium text-[var(--muted)]">
+              Click to cycle between light, dark, and system modes
             </p>
+          </button>
+        </div>
+      </section>
 
             <div className="mt-5 flex items-center gap-2">
               {themeOptions.map((option) => {

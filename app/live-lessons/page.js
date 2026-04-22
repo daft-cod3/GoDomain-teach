@@ -48,252 +48,127 @@ export default function LiveLessonsPage() {
       <div className="dashboard-layout">
         <SideFoot active="Live Lessons" />
         <main className="dashboard-main space-y-6">
-          <section className="glass overflow-hidden rounded-[28px] p-6">
-            <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
+          <section className="card-elevated overflow-hidden p-8">
+            <div className="grid gap-8 xl:grid-cols-[1.1fr_0.9fr]">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-(--fg)/60">
-                  Live lessons
-                </p>
-                <h1 className="mt-2 font-display text-4xl font-semibold">
-                  Student live classroom
+                <p className="section-title">Interactive Sessions</p>
+                <h1 className="section-heading text-4xl mb-4">
+                  Live classroom
                 </h1>
-                <p className="mt-3 max-w-2xl text-sm font-medium leading-7 text-(--fg)/72">
-                  Host theory drills, live demonstrations, and workshop
-                  walkthroughs for students in one dedicated lesson hub.
+                <p className="mt-3 max-w-2xl text-base font-medium leading-relaxed text-[var(--muted)]">
+                  Host dynamic theory drills, live demonstrations, and interactive workshop walkthroughs for your students in one immersive learning hub.
                 </p>
 
-                <div className="mt-6 grid gap-4 sm:grid-cols-3">
+                <div className="mt-8 grid gap-4 sm:grid-cols-3">
                   {[
-                    { label: "Live rooms", value: "2", tone: "var(--blue)" },
+                    { label: "Live rooms", value: "2", icon: "🎯" },
                     {
                       label: "Students waiting",
                       value: "44",
-                      tone: "var(--green)",
+                      icon: "👥",
                     },
                     {
                       label: "Next session",
                       value: "6:00 PM",
-                      tone: "var(--amber)",
+                      icon: "⏰",
                     },
                   ].map((item) => (
                     <div
                       key={item.label}
-                      className="rounded-3xl border border-(--border) p-4 text-slate-950"
-                      style={{ backgroundColor: item.tone }}
+                      className="stat-card"
                     >
-                      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-950/70">
-                        {item.label}
-                      </p>
-                      <p className="mt-2 text-3xl font-semibold">
-                        {item.value}
-                      </p>
+                      <div className="flex items-start justify-between mb-2">
+                        <div>
+                          <p className="stat-label">{item.label}</p>
+                          <p className="text-xl font-bold text-[var(--primary)]">{item.value}</p>
+                        </div>
+                        <span className="text-2xl">{item.icon}</span>
+                      </div>
                     </div>
                   ))}
                 </div>
-
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <button type="button" className="btn btn-primary">
-                    Start live lesson
-                  </button>
-                  <button type="button" className="btn btn-ghost">
-                    Share student invite
-                  </button>
-                </div>
               </div>
 
-              <div className="rounded-[28px] border border-  (--border) bg-[linear-gradient(135deg,rgba(37,99,235,0.92),rgba(15,118,110,0.92))] p-5 text-white shadow-(--shadow-tight)">
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
-                      Live room focus
-                    </p>
-                    <h2 className="mt-2 font-display text-3xl font-semibold">
-                      {activeSession.title}
-                    </h2>
-                  </div>
-                  <span className="chip border-white text-white">
+              <div className="card-elevated p-6 border-2 border-[var(--primary)]">
+                <div className="flex items-center justify-between mb-4">
+                  <p className="section-title">
+                    <span className="inline-block w-2 h-2 rounded-full bg-[var(--danger)] animate-pulse mr-2"></span>
                     {activeSession.status}
-                  </span>
+                  </p>
+                </div>
+                <h3 className="text-lg font-bold mb-2">{activeSession.title}</h3>
+                <p className="text-sm text-[var(--muted)] mb-4">{activeSession.cohort}</p>
+                
+                <div className="space-y-3 mb-6">
+                  <div>
+                    <div className="flex justify-between items-center mb-1">
+                      <span className="text-xs font-semibold text-[var(--muted)]">Session Progress</span>
+                      <span className="font-bold text-[var(--primary)]">{activeSession.progress}%</span>
+                    </div>
+                    <div className="progress-bar">
+                      <div
+                        className="progress-bar-fill"
+                        style={{ width: `${activeSession.progress}%` }}
+                      />
+                    </div>
+                  </div>
                 </div>
 
-                <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                  <div className="rounded-3xl border border-white/20 bg-white/10 p-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
-                      Cohort
-                    </p>
-                    <p className="mt-2 text-lg font-semibold">
-                      {activeSession.cohort}
-                    </p>
-                  </div>
-                  <div className="rounded-3xl border border-white/20 bg-white/10 p-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
-                      Host
-                    </p>
-                    <p className="mt-2 text-lg font-semibold">
-                      {activeSession.host}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-5 rounded-3xl border border-white/20 bg-white/10 p-4">
-                  <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
-                    <span>Session completion</span>
-                    <span>{activeSession.progress}%</span>
-                  </div>
-                  <div className="mt-3 h-3 rounded-full border border-white/20 bg-white/20">
-                    <div
-                      className="h-full rounded-full bg-white"
-                      style={{ width: `${activeSession.progress}%` }}
-                    />
-                  </div>
-                </div>
+                <button className="w-full btn bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] text-white font-semibold py-3 rounded-xl hover:shadow-lg transition-all">
+                  Join Session
+                </button>
               </div>
             </div>
           </section>
 
-          <section className="grid gap-6 xl:grid-cols-[1.02fr_0.98fr]">
-            <div className="panel p-6">
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-(--fg)/60">
-                    Lesson rooms
-                  </p>
-                  <h2 className="mt-2 font-display text-3xl font-semibold">
-                    Live and upcoming sessions
-                  </h2>
-                </div>
-                <span className="chip bg-(--panel-2) text-foreground">
-                  {liveSessions.length} rooms
-                </span>
-              </div>
-
-              <div className="mt-6 space-y-4">
-                {liveSessions.map((session) => (
+          <section className="grid gap-6 lg:grid-cols-2">
+            <div className="card-elevated p-6">
+              <h2 className="section-heading mb-4">Upcoming Sessions</h2>
+              <div className="space-y-3">
+                {liveSessions.slice(1).map((session) => (
                   <div
                     key={session.id}
-                    className="rounded-3xl border border-(--border) bg-(--panel-2) p-4"
+                    className="lesson-card p-4"
                   >
-                    <div className="flex flex-wrap items-center justify-between gap-4">
-                      <div>
-                        <p className="text-lg font-semibold">{session.title}</p>
-                        <p className="mt-1 text-sm font-medium text-(--fg)/65">
-                          {session.cohort} · {session.startsAt}
-                        </p>
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-[var(--fg)] mb-1">{session.title}</h3>
+                        <p className="text-sm text-[var(--muted)]">{session.cohort}</p>
                       </div>
-                      <span
-                        className="rounded-full border border-(--border) px-3 py-1 text-xs font-semibold"
-                        style={{
-                          backgroundColor:
-                            session.status === "Live now"
-                              ? "rgba(34, 197, 94, 0.16)"
-                              : session.status === "Starting soon"
-                                ? "rgba(245, 158, 11, 0.18)"
-                                : "rgba(37, 99, 235, 0.12)",
-                        }}
-                      >
+                      <span className={`badge text-xs ${session.status === "Starting soon" ? "badge-warning" : "badge"}`}>
                         {session.status}
                       </span>
                     </div>
-
-                    <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                      <div className="rounded-2xl border border-(--border) bg-(--panel) p-3">
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-(--fg)/55">
-                          Attendees
-                        </p>
-                        <p className="mt-2 text-xl font-semibold">
-                          {session.attendees}
-                        </p>
+                    <div className="flex items-center justify-between text-xs">
+                      <div className="flex items-center gap-4 text-[var(--muted)]">
+                        <span>📅 {session.startsAt}</span>
+                        <span>👥 {session.attendees}</span>
                       </div>
-                      <div className="rounded-2xl border border-(--border) bg-(--panel) p-3">
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-(--fg)/55">
-                          Host
-                        </p>
-                        <p className="mt-2 text-xl font-semibold">
-                          {session.host}
-                        </p>
-                      </div>
-                      <div className="rounded-2xl border border-(--border) bg-(--panel) p-3">
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-(--fg)/55">
-                          Session code
-                        </p>
-                        <p className="mt-2 text-xl font-semibold">
-                          {session.id.toUpperCase()}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="mt-4 flex flex-wrap gap-3">
-                      <button type="button" className="btn btn-primary">
-                        Join room
-                      </button>
-                      <button type="button" className="btn btn-ghost">
-                        Copy invite
-                      </button>
+                      <button className="icon-btn">→</button>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="space-y-6">
-              <section className="rounded-[28px] border border-(--border) bg-(--panel) p-6 shadow-(--shadow-tight)">
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-(--fg)/60">
-                      Session checklist
-                    </p>
-                    <h2 className="mt-2 font-display text-3xl font-semibold">
-                      Before students join
-                    </h2>
-                  </div>
-                  <span className="chip bg-(--green) text-foreground">
-                    Ready
-                  </span>
-                </div>
-
-                <div className="mt-5 space-y-3">
-                  {lessonChecklist.map((item, index) => (
-                    <label
-                      key={item}
-                      className="flex items-center gap-3 rounded-2xl border border-(--border) bg-(--panel-2) px-4 py-3 text-sm font-medium"
-                    >
-                      <input
-                        type="checkbox"
-                        defaultChecked={index < 3}
-                        className="h-4 w-4 accent-(--blue)"
-                      />
+            <div className="card-elevated p-6">
+              <h2 className="section-heading mb-4">Pre-Session Checklist</h2>
+              <div className="space-y-3">
+                {lessonChecklist.map((item, idx) => (
+                  <label
+                    key={idx}
+                    className="flex items-center gap-3 p-3 rounded-lg cursor-pointer hover:bg-[var(--panel-2)] transition-colors group"
+                  >
+                    <input
+                      type="checkbox"
+                      className="w-5 h-5 rounded-lg border-2 border-[var(--border)] accent-[var(--primary)] cursor-pointer"
+                    />
+                    <span className="text-sm font-medium text-[var(--fg)] group-hover:text-[var(--primary)] transition-colors">
                       {item}
-                    </label>
-                  ))}
-                </div>
-              </section>
-
-              <section className="rounded-[28px] border border-(--border)] bg-[linear-gradient(135deg,rgba(245,158,11,0.14),rgba(37,99,235,0.06))] p-6 shadow-(--shadow-tight)">
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-(--fg)/60">
-                  Student access
-                </p>
-                <h2 className="mt-2 font-display text-3xl font-semibold">
-                  Quick join details
-                </h2>
-                <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                  {[
-                    { label: "Primary room", value: "ROOM-01" },
-                    { label: "Backup stream", value: "ROOM-02" },
-                    { label: "Attendance mode", value: "Auto check-in" },
-                    { label: "Shared resources", value: "Slides + simulator" },
-                  ].map((item) => (
-                    <div
-                      key={item.label}
-                      className="rounded-2xl border border-(--border) bg-(--panel) p-4"
-                    >
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-(--fg)/55">
-                        {item.label}
-                      </p>
-                      <p className="mt-2 text-lg font-semibold">{item.value}</p>
-                    </div>
-                  ))}
-                </div>
-              </section>
+                    </span>
+                  </label>
+                ))}
+              </div>
             </div>
           </section>
         </main>

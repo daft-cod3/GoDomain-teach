@@ -112,7 +112,7 @@ function VaultIcon(props) {
 function SectionMarker({ Icon, toneClass = "text-[var(--blue)]" }) {
   return (
     <span
-      className={`icon-shell h-12 w-12 shadow-[var(--shadow-tight)] ${toneClass}`}
+      className={`icon-shell h-12 w-12 shadow-(--shadow-tight) ${toneClass}`}
     >
       <Icon className="h-5 w-5" />
     </span>
@@ -164,7 +164,7 @@ function renderMediaPreview(item) {
   return (
     <div className="flex h-full w-full items-center justify-center rounded-[26px] bg-[linear-gradient(135deg,rgba(37,99,235,0.16),rgba(34,197,94,0.16))] text-center">
       <div>
-        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--fg)]/55">
+        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-(--fg)/55">
           Preview
         </p>
         <p className="mt-2 text-lg font-semibold">{item.kind}</p>
@@ -308,33 +308,33 @@ export default function ContentPage() {
         <SideFoot active="Content" />
         <main className="dashboard-main space-y-6">
           <section className="dashboard-section enter rounded-[34px] p-6 sm:p-7">
-            <div className="absolute -right-10 top-0 h-40 w-40 rounded-full bg-[var(--aura-blue)] blur-3xl" />
-            <div className="absolute bottom-0 left-8 h-28 w-28 rounded-full bg-[var(--aura-green)] blur-3xl" />
+            <div className="absolute -right-10 top-0 h-40 w-40 rounded-full bg-(--aura-blue) blur-3xl" />
+            <div className="absolute bottom-0 left-8 h-28 w-28 rounded-full bg-(--aura-green) blur-3xl" />
 
             <div className="relative flex flex-wrap items-center justify-between gap-4">
               <div className="flex max-w-3xl items-start gap-4">
                 <SectionMarker
                   Icon={StudioSparkIcon}
-                  toneClass="text-[var(--blue)]"
+                  toneClass="text-(--blue)"
                 />
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--fg)]/60">
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-(--fg)/60">
                     Content studio
                   </p>
                   <h1 className="font-display text-3xl font-semibold sm:text-4xl">
                     Learning content
                   </h1>
-                  <p className="mt-3 max-w-2xl text-sm font-medium leading-6 text-[var(--muted)]">
+                  <p className="mt-3 max-w-2xl text-sm font-medium leading-6 text-(--muted)">
                     Upload media, publish links, build quizzes, and shape the
                     student learning path from one polished studio workspace.
                   </p>
                 </div>
               </div>
               <div className="flex flex-wrap gap-2">
-                <span className="chip bg-[var(--blue)] text-white">
+                <span className="chip bg-(--blue) text-white">
                   {contentCount} items
                 </span>
-                <span className="chip bg-[var(--panel-strong)] text-[var(--fg)]">
+                <span className="chip bg-(--panel-strong) text-foreground">
                   Adaptive theme
                 </span>
               </div>
@@ -342,8 +342,8 @@ export default function ContentPage() {
           </section>
 
           <section className="grid gap-6 lg:grid-cols-[1fr_1fr]">
-            <div className="dashboard-section enter rounded-[32px] p-6">
-              <div className="absolute -right-8 top-8 h-24 w-24 rounded-full bg-[var(--aura-blue)] blur-3xl" />
+            <div className="dashboard-section enter rounded-4xl p-6">
+              <div className="absolute -right-8 top-8 h-24 w-24 rounded-full bg-(--aura-blue) blur-3xl" />
               <div className="relative flex items-center justify-between gap-3">
                 <div className="flex items-start gap-4">
                   <SectionMarker
@@ -351,7 +351,7 @@ export default function ContentPage() {
                     toneClass="text-[var(--green)]"
                   />
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--fg)]/60">
+                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-(--fg)/60">
                       Media upload
                     </p>
                     <h2 className="font-display text-2xl font-semibold">
@@ -359,7 +359,7 @@ export default function ContentPage() {
                     </h2>
                   </div>
                 </div>
-                <span className="chip bg-[var(--green)] text-[var(--fg)]">
+                <span className="chip bg-(--green) text-foreground">
                   {mediaItems.length} live
                 </span>
               </div>
@@ -368,40 +368,40 @@ export default function ContentPage() {
                 <div className="glass-soft interactive-tile spotlight-ring rounded-[30px] p-4">
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/58">
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-(--fg)/58">
                         Latest upload
                       </p>
-                      <p className="mt-1 text-sm font-medium text-[var(--fg)]/68">
+                      <p className="mt-1 text-sm font-medium text-(--fg)/68">
                         {mediaState}
                       </p>
                     </div>
                     {latestMedia
-                      ? <span className="chip bg-[var(--blue)] text-white">
+                      ? <span className="chip bg-(--blue) text-white">
                           {latestMedia.status}
                         </span>
-                      : <span className="chip bg-[var(--panel-strong)] text-[var(--fg)]">
+                      : <span className="chip bg-(--panel-strong) text-foreground">
                           No media yet
                         </span>}
                   </div>
 
                   {latestMedia
                     ? <div className="mt-4 grid gap-4 sm:grid-cols-[0.95fr_1.05fr]">
-                        <div className="relative h-48 overflow-hidden rounded-[28px] border border-[var(--border)] bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))]">
+                        <div className="relative h-48 overflow-hidden rounded-[28px] border border-(--border) bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))]">
                           {renderMediaPreview(latestMedia)}
                         </div>
-                        <div className="rounded-[28px] border border-[var(--border)] bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] p-4">
+                        <div className="rounded-[28px] border border-(--border) bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] p-4">
                           <div className="flex flex-wrap gap-2">
-                            <span className="chip bg-[var(--panel)] text-[var(--fg)]">
+                            <span className="chip bg-(--panel) text-foreground">
                               {latestMedia.kind}
                             </span>
-                            <span className="chip bg-[var(--panel)] text-[var(--fg)]">
+                            <span className="chip bg-(--panel) text-foreground">
                               {formatFileSize(latestMedia.size)}
                             </span>
                           </div>
                           <h3 className="mt-4 text-lg font-semibold">
                             {latestMedia.name}
                           </h3>
-                          <p className="mt-2 text-sm font-medium text-[var(--fg)]/65">
+                          <p className="mt-2 text-sm font-medium text-(--fg)/65">
                             Uploaded{" "}
                             {formatPublishedDate(latestMedia.uploadedAt)}. The
                             newest file appears first so teachers can confirm
@@ -409,27 +409,27 @@ export default function ContentPage() {
                           </p>
                         </div>
                       </div>
-                    : <div className="mt-4 rounded-[28px] border border-dashed border-[var(--border)] bg-[linear-gradient(180deg,var(--panel),var(--panel-deep))] px-4 py-10 text-center text-sm font-medium text-[var(--fg)]/55">
+                    : <div className="mt-4 rounded-[28px] border border-dashed border-(--border) bg-[linear-gradient(180deg,var(--panel),var(--panel-deep))] px-4 py-10 text-center text-sm font-medium text-(--fg)/55">
                         Upload a video or image to show the newest media here
                         instantly.
                       </div>}
                 </div>
 
-                <label className="panel-soft interactive-tile flex flex-col gap-2 rounded-[26px] p-4 text-sm font-medium text-[var(--fg)]/70">
+                <label className="panel-soft interactive-tile flex flex-col gap-2 rounded-[26px] p-4 text-sm font-medium text-(--fg)/70">
                   Upload lesson video
                   <input
                     type="file"
                     accept="video/*"
-                    className="text-sm text-[var(--fg)]"
+                    className="text-sm text-foreground"
                     onChange={(event) => handleMediaUpload("Video", event)}
                   />
                 </label>
-                <label className="panel-soft interactive-tile flex flex-col gap-2 rounded-[26px] p-4 text-sm font-medium text-[var(--fg)]/70">
+                <label className="panel-soft interactive-tile flex flex-col gap-2 rounded-[26px] p-4 text-sm font-medium text-(--fg)/70">
                   Upload cover image
                   <input
                     type="file"
                     accept="image/*"
-                    className="text-sm text-[var(--fg)]"
+                    className="text-sm text-foreground"
                     onChange={(event) => handleMediaUpload("Image", event)}
                   />
                 </label>
@@ -438,25 +438,25 @@ export default function ContentPage() {
                   {mediaItems.slice(0, 3).map((item, index) => (
                     <div
                       key={item.id}
-                      className={`interactive-tile flex items-center justify-between rounded-[24px] border px-4 py-3 text-sm font-medium ${
+                      className={`interactive-tile flex items-center justify-between rounded-3xl border px-4 py-3 text-sm font-medium ${
                         index === 0
-                          ? "border-[rgba(37,99,235,0.26)] bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] shadow-[var(--shadow-tight)]"
-                          : "border-[var(--border)] bg-[linear-gradient(180deg,var(--panel),var(--panel-deep))]"
+                          ? "border-[rgba(37,99,235,0.26)] bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] shadow-(--shadow-tight)"
+                          : "border-(--border) bg-[linear-gradient(180deg,var(--panel),var(--panel-deep))]"
                       }`}
                     >
                       <div>
                         <p className="font-medium">{item.name}</p>
-                        <p className="text-xs text-[var(--fg)]/60">
+                        <p className="text-xs text-(--fg)/60">
                           {item.kind} | {formatFileSize(item.size)}
                         </p>
                       </div>
                       <div className="flex flex-wrap items-center gap-2">
                         {index === 0
-                          ? <span className="chip bg-[var(--blue)] text-white">
+                          ? <span className="chip bg-(--blue) text-white">
                               Latest
                             </span>
                           : null}
-                        <span className="chip bg-[var(--panel-strong)] text-[var(--fg)]">
+                        <span className="chip bg-(--panel-strong) text-foreground">
                           {item.status}
                         </span>
                       </div>
@@ -466,8 +466,8 @@ export default function ContentPage() {
               </div>
             </div>
 
-            <div className="dashboard-section enter rounded-[32px] p-6">
-              <div className="absolute -left-6 top-8 h-24 w-24 rounded-full bg-[var(--aura-green)] blur-3xl" />
+            <div className="dashboard-section enter rounded-4xl p-6">
+              <div className="absolute -left-6 top-8 h-24 w-24 rounded-full bg-(--aura-green) blur-3xl" />
               <div className="relative flex items-center justify-between gap-3">
                 <div className="flex items-start gap-4">
                   <SectionMarker
@@ -475,7 +475,7 @@ export default function ContentPage() {
                     toneClass="text-[var(--blue)]"
                   />
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--fg)]/60">
+                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-(--fg)/60">
                       Links library
                     </p>
                     <h2 className="font-display text-2xl font-semibold">
@@ -483,7 +483,7 @@ export default function ContentPage() {
                     </h2>
                   </div>
                 </div>
-                <span className="chip bg-[var(--blue)] text-white">
+                <span className="chip bg-(--blue) text-white">
                   {links.length} links
                 </span>
               </div>
@@ -501,13 +501,13 @@ export default function ContentPage() {
                     value={linkInput}
                     onChange={(event) => setLinkInput(event.target.value)}
                     placeholder="https://..."
-                    className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-[var(--fg)] focus:outline-none focus:ring-2 focus:ring-[var(--blue)]"
+                    className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-foreground focus:outline-none focus:ring-2 focus:ring-(--blue)"
                   />
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <button type="submit" className="btn btn-primary">
                       Add link
                     </button>
-                    <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/55">
+                    <span className="text-xs font-semibold uppercase tracking-[0.18em] text-(--fg)/55">
                       {linkState}
                     </span>
                   </div>
@@ -517,14 +517,14 @@ export default function ContentPage() {
                   ? <div className="glass-soft interactive-tile spotlight-ring rounded-[30px] p-4">
                       <div className="flex flex-wrap items-center justify-between gap-3">
                         <div>
-                          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/58">
+                          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-(--fg)/58">
                             Latest published link
                           </p>
                           <h3 className="mt-2 text-lg font-semibold">
                             {latestLink.label}
                           </h3>
                         </div>
-                        <span className="chip bg-[var(--green)] text-[var(--fg)]">
+                        <span className="chip bg-(--green) text-foreground">
                           Student dashboard
                         </span>
                       </div>
@@ -532,10 +532,10 @@ export default function ContentPage() {
                         href={latestLink.url}
                         target="_blank"
                         rel="noreferrer"
-                        className="interactive-tile mt-4 block rounded-[24px] border border-[var(--border)] bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] px-4 py-4 text-sm font-medium text-[var(--fg)]"
+                        className="interactive-tile mt-4 block rounded-3xl border border-(--border) bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] px-4 py-4 text-sm font-medium text-foreground"
                       >
                         <span className="block truncate">{latestLink.url}</span>
-                        <span className="mt-2 block text-xs text-[var(--fg)]/55">
+                        <span className="mt-2 block text-xs text-(--fg)/55">
                           Published {formatPublishedDate(latestLink.addedAt)}
                         </span>
                       </a>
@@ -546,25 +546,25 @@ export default function ContentPage() {
                   {links.map((item, index) => (
                     <div
                       key={item.id}
-                      className={`interactive-tile flex items-center justify-between rounded-[24px] border px-4 py-3 text-sm font-medium ${
+                      className={`interactive-tile flex items-center justify-between rounded-3xl border px-4 py-3 text-sm font-medium ${
                         index === 0
-                          ? "border-[rgba(37,99,235,0.26)] bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] shadow-[var(--shadow-tight)]"
-                          : "border-[var(--border)] bg-[linear-gradient(180deg,var(--panel),var(--panel-deep))]"
+                          ? "border-[rgba(37,99,235,0.26)] bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] shadow-(--shadow-tight)"
+                          : "border-(--border) bg-[linear-gradient(180deg,var(--panel),var(--panel-deep))]"
                       }`}
                     >
                       <div className="min-w-0">
                         <p className="truncate">{item.url}</p>
-                        <p className="mt-1 text-xs text-[var(--fg)]/60">
+                        <p className="mt-1 text-xs text-(--fg)/60">
                           {item.source} | {formatPublishedDate(item.addedAt)}
                         </p>
                       </div>
                       <div className="ml-3 flex shrink-0 items-center gap-2">
                         {index === 0
-                          ? <span className="chip bg-[var(--blue)] text-white">
+                          ? <span className="chip bg-(--blue) text-white">
                               Latest
                             </span>
                           : null}
-                        <span className="chip bg-[var(--panel-strong)] text-[var(--fg)]">
+                        <span className="chip bg-(--panel-strong) text-foreground">
                           {item.status}
                         </span>
                       </div>
@@ -577,8 +577,8 @@ export default function ContentPage() {
 
           <SetTest />
 
-          <section className="dashboard-section enter rounded-[32px] p-6">
-            <div className="absolute -right-6 top-0 h-24 w-24 rounded-full bg-[var(--aura-rose)] blur-3xl" />
+          <section className="dashboard-section enter rounded-4xl p-6">
+            <div className="absolute -right-6 top-0 h-24 w-24 rounded-full bg-(--aura-rose) blur-3xl" />
             <div className="relative flex items-center justify-between">
               <div className="flex items-start gap-4">
                 <SectionMarker
@@ -586,7 +586,7 @@ export default function ContentPage() {
                   toneClass="text-[var(--amber)]"
                 />
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--fg)]/60">
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-(--fg)/60">
                     Quiz creation
                   </p>
                   <h2 className="font-display text-2xl font-semibold">
@@ -594,7 +594,7 @@ export default function ContentPage() {
                   </h2>
                 </div>
               </div>
-              <span className="chip bg-[var(--green)] text-[var(--fg)]">
+              <span className="chip bg-(--green) text-foreground">
                 2 questions
               </span>
             </div>
@@ -605,12 +605,12 @@ export default function ContentPage() {
                   className="panel-soft interactive-tile flex flex-col gap-4 rounded-[28px] p-4"
                 >
                   <div className="flex flex-wrap items-center justify-between gap-3">
-                    <p className="text-sm font-semibold text-[var(--fg)]/70">
+                    <p className="text-sm font-semibold text-(--fg)/70">
                       Question {index}
                     </p>
-                    <label className="flex items-center gap-2 text-xs font-semibold text-[var(--fg)]/60">
+                    <label className="flex items-center gap-2 text-xs font-semibold text-(--fg)/60">
                       Correct option position
-                      <select className="field-shell rounded-xl px-3 py-2 text-xs font-semibold text-[var(--fg)] focus:outline-none focus:ring-2 focus:ring-[var(--blue)]">
+                      <select className="field-shell rounded-xl px-3 py-2 text-xs font-semibold text-foreground focus:outline-none focus:ring-2 focus:ring-(--blue)">
                         <option>A</option>
                         <option>B</option>
                         <option>C</option>
@@ -621,28 +621,28 @@ export default function ContentPage() {
                   <input
                     type="text"
                     placeholder={`Question ${index}`}
-                    className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-[var(--fg)] placeholder:text-[var(--fg)]/50 focus:outline-none focus:ring-2 focus:ring-[var(--blue)]"
+                    className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-foreground placeholder:text-(--fg)/50 focus:outline-none focus:ring-2 focus:ring-(--blue)"
                   />
                   <div className="grid gap-3 md:grid-cols-2">
                     <input
                       type="text"
                       placeholder="Answer A"
-                      className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-[var(--fg)] focus:outline-none focus:ring-2 focus:ring-[var(--blue)]"
+                      className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-foreground focus:outline-none focus:ring-2 focus:ring-(--blue)"
                     />
                     <input
                       type="text"
                       placeholder="Answer B"
-                      className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-[var(--fg)] focus:outline-none focus:ring-2 focus:ring-[var(--blue)]"
+                      className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-foreground focus:outline-none focus:ring-2 focus:ring-(--blue)"
                     />
                     <input
                       type="text"
                       placeholder="Answer C"
-                      className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-[var(--fg)] focus:outline-none focus:ring-2 focus:ring-[var(--blue)]"
+                      className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-foreground focus:outline-none focus:ring-2 focus:ring-(--blue)"
                     />
                     <input
                       type="text"
                       placeholder="Answer D"
-                      className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-[var(--fg)] focus:outline-none focus:ring-2 focus:ring-[var(--blue)]"
+                      className="field-shell w-full rounded-2xl px-4 py-3 text-sm font-medium text-foreground focus:outline-none focus:ring-2 focus:ring-(--blue)"
                     />
                   </div>
                 </div>
@@ -658,8 +658,8 @@ export default function ContentPage() {
             </div>
           </section>
 
-          <section className="dashboard-section enter rounded-[32px] p-6">
-            <div className="absolute left-4 top-4 h-24 w-24 rounded-full bg-[var(--aura-blue)] blur-3xl" />
+          <section className="dashboard-section enter rounded-4xl p-6">
+            <div className="absolute left-4 top-4 h-24 w-24 rounded-full bg-(--aura-blue) blur-3xl" />
             <div className="relative flex items-center justify-between">
               <div className="flex items-start gap-4">
                 <SectionMarker
@@ -667,7 +667,7 @@ export default function ContentPage() {
                   toneClass="text-[var(--blue)]"
                 />
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--fg)]/60">
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-(--fg)/60">
                     Materials vault
                   </p>
                   <h2 className="font-display text-2xl font-semibold">
@@ -675,7 +675,7 @@ export default function ContentPage() {
                   </h2>
                 </div>
               </div>
-              <span className="chip bg-[var(--green)] text-[var(--fg)]">
+              <span className="chip bg-(--green) text-foreground">
                 Updated
               </span>
             </div>
@@ -683,15 +683,15 @@ export default function ContentPage() {
               {materials.map((item) => (
                 <div
                   key={item.title}
-                  className="interactive-tile flex items-center justify-between rounded-[24px] border border-[var(--border)] bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] px-4 py-3 text-sm font-medium"
+                  className="interactive-tile flex items-center justify-between rounded-3xl border border-(--border) bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] px-4 py-3 text-sm font-medium"
                 >
                   <div>
                     <p className="font-medium">{item.title}</p>
-                    <p className="text-xs text-[var(--fg)]/60">
+                    <p className="text-xs text-(--fg)/60">
                       GoDomain Studio
                     </p>
                   </div>
-                  <span className="chip bg-[var(--blue)] text-white">
+                  <span className="chip bg-(--blue) text-white">
                     {item.type}
                   </span>
                 </div>

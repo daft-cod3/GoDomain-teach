@@ -112,44 +112,44 @@ export default function StudentsPage() {
       <div className="dashboard-layout">
         <SideFoot active="Students" />
         <main className="dashboard-main space-y-6">
-          <section className="glass rounded-[24px] p-4 md:p-5">
-            <div className="flex flex-wrap items-center justify-between gap-3">
+          <section className="card-elevated rounded-[24px] p-6">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--fg)]/60">
-                  Communication
+                <p className="section-title">
+                  Classroom Management
                 </p>
-                <h1 className="mt-1.5 font-display text-2xl font-semibold">
-                  Learner outreach
+                <h1 className="section-heading text-3xl">
+                  Student Communication
                 </h1>
-                <p className="mt-1.5 max-w-2xl text-xs font-medium leading-5 text-[var(--fg)]/70">
-                  Search the roster, choose recipients from the dropdown, and
-                  keep all learner communication in one place.
+                <p className="mt-2 max-w-2xl text-base font-medium text-[var(--muted)]">
+                  Manage your entire student roster, send broadcasts, and keep all classroom communication centralized in one place.
                 </p>
               </div>
-              <span className="chip bg-[var(--green)] text-[var(--fg)]">
+              <span className="badge badge-success gap-2">
+                <span className="inline-block w-2 h-2 rounded-full bg-white"></span>
                 {activeStudentsCount} / {students.length} active
               </span>
             </div>
 
-            <div className="mt-6 grid gap-4 xl:grid-cols-[1.05fr_0.95fr]">
-              <div className="rounded-[22px] border border-[var(--border)] bg-[var(--panel)]/65 p-3.5 shadow-[var(--shadow-tight)] md:p-4">
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/60">
-                    Recipient filters
+            <div className="mt-6 grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
+              <div className="card-elevated p-5">
+                <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+                  <p className="section-title">
+                    Recipient Filters
                   </p>
-                  <span className="text-[10px] font-medium text-[var(--fg)]/55">
+                  <span className="text-sm font-semibold text-[var(--primary)]">
                     {filteredStudents.length} matches
                   </span>
                 </div>
 
-                <fieldset className="mt-4 grid gap-2">
+                <fieldset className="mt-4 grid gap-2 mb-6">
                   {recipientScopes.map((option) => (
                     <label
                       key={option.id}
-                      className={`rounded-[22px] border px-3 py-2.5 text-xs font-medium transition ${
+                      className={`rounded-[16px] border px-4 py-3 text-sm font-medium transition-all cursor-pointer ${
                         scope === option.id
-                          ? "border-transparent bg-[var(--blue)] text-white shadow-[var(--shadow-tight)]"
-                          : "border-[var(--border)] bg-[var(--panel)] text-[var(--fg)]"
+                          ? "border-transparent bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] text-white shadow-[var(--shadow)]"
+                          : "border-[var(--border)] bg-[var(--panel)] text-[var(--fg)] hover:border-[var(--primary)]"
                       }`}
                     >
                       <div className="flex items-center gap-3">
@@ -159,14 +159,14 @@ export default function StudentsPage() {
                           value={option.id}
                           checked={scope === option.id}
                           onChange={(event) => setScope(event.target.value)}
-                          className="h-3.5 w-3.5 accent-[var(--blue)]"
+                          className="h-4 w-4 accent-[var(--primary)] cursor-pointer"
                         />
                         <div>
                           <p className="font-semibold">{option.label}</p>
                           <p
-                            className={`text-[11px] leading-4 ${
+                            className={`text-xs leading-4 ${
                               scope === option.id
-                                ? "text-white/75"
+                                ? "text-white/80"
                                 : "text-[var(--fg)]/60"
                             }`}
                           >
@@ -178,26 +178,26 @@ export default function StudentsPage() {
                   ))}
                 </fieldset>
 
-                <div className="mt-4 grid gap-3 md:grid-cols-[1fr_220px]">
-                  <label className="rounded-[22px] border border-[var(--border)] bg-[var(--panel-2)] p-3 text-xs font-medium text-[var(--fg)]/80 md:p-4">
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/55">
+                <div className="mt-4 grid gap-3 md:grid-cols-[1fr_200px]">
+                  <label className="rounded-[14px] border border-[var(--border)] bg-[var(--panel-2)] p-4 text-sm font-medium">
+                    <span className="section-title mb-2">
                       Search learners
                     </span>
                     <input
                       type="search"
                       value={searchTerm}
                       onChange={(event) => setSearchTerm(event.target.value)}
-                      placeholder="Search by name, ID, class, or program..."
-                      className="mt-2.5 w-full rounded-[18px] border border-[var(--border)] bg-[var(--panel)] px-3 py-2.5 text-xs text-[var(--fg)] placeholder:text-[var(--fg)]/50 focus:outline-none focus:ring-2 focus:ring-[var(--blue)]"
+                      placeholder="Search by name, ID, class..."
+                      className="mt-2 w-full rounded-[12px] border border-[var(--border)] bg-[var(--panel)] px-3 py-2.5 text-sm text-[var(--fg)] placeholder:text-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                     />
                   </label>
 
-                  <label className="rounded-[22px] border border-[var(--border)] bg-[var(--panel-2)] p-3 text-xs font-medium text-[var(--fg)]/80 md:p-4">
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/55">
-                      Dropdown menu
+                  <label className="rounded-[14px] border border-[var(--border)] bg-[var(--panel-2)] p-4 text-sm font-medium">
+                    <span className="section-title mb-2">
+                      Add learner
                     </span>
                     <select
-                      className="mt-2.5 w-full rounded-[18px] border border-[var(--border)] bg-[var(--panel)] px-3 py-2.5 text-xs text-[var(--fg)] focus:outline-none focus:ring-2 focus:ring-[var(--blue)]"
+                      className="mt-2 w-full rounded-[12px] border border-[var(--border)] bg-[var(--panel)] px-3 py-2.5 text-sm text-[var(--fg)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                       defaultValue=""
                       onChange={(event) => {
                         addSelectedStudent(event.target.value);
@@ -214,16 +214,16 @@ export default function StudentsPage() {
                   </label>
                 </div>
 
-                <div className="mt-4 rounded-[22px] border border-[var(--border)] bg-[var(--panel)] p-3 md:p-4">
-                  <div className="flex flex-wrap items-center justify-between gap-3">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/60">
-                      Selected learners
+                <div className="mt-4 card-elevated p-4">
+                  <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
+                    <p className="section-title">
+                      Selected Recipients
                     </p>
-                    <span className="text-[10px] font-medium text-[var(--fg)]/55">
+                    <span className="text-sm font-semibold text-[var(--primary)]">
                       {selectedIds.length} chosen
                     </span>
                   </div>
-                  <div className="mt-3 flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2">
                     {selectedIds.length > 0
                       ? selectedIds.map((studentId) => {
                           const learner = students.find(
@@ -238,51 +238,52 @@ export default function StudentsPage() {
                               key={studentId}
                               type="button"
                               onClick={() => removeSelectedStudent(studentId)}
-                              className="rounded-full border border-[var(--border)] bg-[var(--panel-2)] px-3 py-1.5 text-[10px] font-semibold"
+                              className="badge badge-success gap-2 text-white hover:scale-105 transition-transform"
                             >
-                              {learner.name} x
+                              {learner.name}
+                              <span>×</span>
                             </button>
                           );
                         })
-                      : <p className="text-xs font-medium text-[var(--fg)]/55">
-                          Use the search bar and dropdown menu to add
-                          recipients.
+                      : <p className="text-sm font-medium text-[var(--muted)]">
+                          Use search and dropdown to add recipients.
                         </p>}
                   </div>
                 </div>
               </div>
 
-              <div className="rounded-[22px] border border-[var(--border)] bg-[linear-gradient(135deg,rgba(37,99,235,0.08),rgba(245,158,11,0.08))] p-3.5 shadow-[var(--shadow-tight)] md:p-4">
-                <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="card-elevated p-5">
+                <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
                   <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/60">
-                      Teacher broadcast
+                    <p className="section-title">
+                      Teacher Broadcast
                     </p>
-                    <h2 className="mt-1.5 font-display text-xl font-semibold">
-                      Communication composer
+                    <h2 className="section-heading text-xl mt-1">
+                      Compose Message
                     </h2>
                   </div>
-                  <span className="chip bg-[var(--panel)] text-[var(--fg)]">
+                  <span className="badge">
                     {composeState}
                   </span>
                 </div>
 
-                <div className="mt-4 grid gap-2 sm:grid-cols-3">
+                <div className="mt-4 grid gap-2 sm:grid-cols-3 mb-4">
                   {[
-                    { label: "Recipients", value: recipientStudents.length },
-                    { label: "Active learners", value: activeStudentsCount },
-                    { label: "Search results", value: filteredStudents.length },
+                    { label: "Recipients", value: recipientStudents.length, icon: "👥" },
+                    { label: "Active", value: activeStudentsCount, icon: "✅" },
+                    { label: "Matches", value: filteredStudents.length, icon: "🔍" },
                   ].map((item) => (
                     <div
                       key={item.label}
-                      className="rounded-[18px] border border-[var(--border)] bg-[var(--panel)] p-3"
+                      className="stat-card"
                     >
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--fg)]/55">
-                        {item.label}
-                      </p>
-                      <p className="mt-1.5 text-xl font-semibold">
-                        {item.value}
-                      </p>
+                      <div className="flex items-start justify-between">
+                        <div>
+                          <p className="stat-label">{item.label}</p>
+                          <p className="text-xl font-bold text-[var(--primary)]">{item.value}</p>
+                        </div>
+                        <span className="text-2xl">{item.icon}</span>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -292,22 +293,24 @@ export default function StudentsPage() {
                   value={broadcastMessage}
                   onChange={(event) => setBroadcastMessage(event.target.value)}
                   placeholder="Write a message to your learners..."
-                  className="mt-4 w-full resize-none rounded-[22px] border border-[var(--border)] bg-[var(--panel)] px-3 py-3 text-xs font-medium text-[var(--fg)] placeholder:text-[var(--fg)]/50 focus:outline-none focus:ring-2 focus:ring-[var(--blue)]"
+                  className="w-full resize-none rounded-[14px] border border-[var(--border)] bg-[var(--panel)] px-4 py-3 text-sm font-medium text-[var(--fg)] placeholder:text-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                 />
 
                 <div className="mt-4 flex flex-wrap gap-3">
                   <button
                     type="button"
                     onClick={handleSend}
-                    className="btn btn-primary"
+                    className="btn btn-primary gap-2"
                   >
+                    <span>📤</span>
                     Send to learners
                   </button>
                   <button
                     type="button"
                     onClick={handleSaveDraft}
-                    className="btn btn-ghost"
+                    className="btn btn-ghost gap-2"
                   >
+                    <span>💾</span>
                     Save draft
                   </button>
                 </div>
@@ -316,25 +319,25 @@ export default function StudentsPage() {
           </section>
 
           <section className="space-y-4">
-            <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--fg)]/60">
-                  Class categories
+                <p className="section-title">
+                  Class Organization
                 </p>
-                <h2 className="mt-1.5 font-display text-2xl font-semibold">
-                  A to D learner groups
+                <h2 className="section-heading">
+                  Learner Groups (A-D)
                 </h2>
-                <p className="mt-1.5 max-w-3xl text-xs font-medium leading-5 text-[var(--fg)]/70">
-                  Open a category to view learners grouped under that class
-                  family.
+                <p className="mt-2 max-w-3xl text-base font-medium text-[var(--muted)]">
+                  Browse students organized by their class category and tier.
                 </p>
               </div>
-              <span className="chip bg-[var(--panel-2)] text-[var(--fg)]">
+              <span className="badge gap-2">
+                <span className="inline-block w-2 h-2 rounded-full bg-white"></span>
                 {classCategories.length} groups
               </span>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 xl:grid-cols-4">
+            <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-4">
               {classCategories.map((category) => (
                 <ClassCategoryCard
                   key={category.id}

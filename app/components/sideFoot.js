@@ -288,10 +288,10 @@ export default function SideFoot({ active = "Overview" }) {
 
   return (
     <>
-      <div className="nav-shell flex items-center justify-between gap-3 rounded-[24px] px-4 py-3 md:hidden">
+      <div className="nav-shell flex items-center justify-between gap-3 rounded-3xl px-4 py-3 md:hidden">
         <div className="min-w-0">
           <p className="text-lg font-semibold">GoDomain</p>
-          <p className="text-xs font-medium text-[var(--muted)]">
+          <p className="text-xs font-medium text-(--muted)">
             Teacher dashboard
           </p>
         </div>
@@ -319,20 +319,20 @@ export default function SideFoot({ active = "Overview" }) {
         <aside
           className={`nav-shell ${
             open ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"
-          } fixed inset-y-0 left-0 z-20 flex h-full w-[min(84vw,21rem)] flex-col overflow-y-auto rounded-none px-4 py-4 duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:bottom-auto md:left-6 md:top-6 md:z-30 md:h-[calc(100vh-3rem)] md:w-[6.25rem] md:translate-x-0 md:rounded-[30px] md:px-3 md:py-3 md:opacity-100 xl:left-8 xl:top-8 xl:h-[calc(100vh-4rem)] xl:w-[18.5rem] xl:rounded-[32px] xl:px-5 xl:py-5`}
+          } fixed inset-y-0 left-0 z-20 flex h-full w-[min(84vw,21rem)] flex-col overflow-y-auto rounded-none px-4 py-4 duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:bottom-auto md:left-6 md:top-6 md:z-30 md:h-[calc(100vh-3rem)] md:w-25 md:translate-x-0 md:rounded-[30px] md:px-3 md:py-3 md:opacity-100 xl:left-8 xl:top-8 xl:h-[calc(100vh-4rem)] xl:w-74 xl:rounded-4xl xl:px-5 xl:py-5`}
         >
           <div className="flex h-full flex-col gap-4">
-            <div className="rounded-[28px] border border-[var(--border)] bg-[linear-gradient(150deg,var(--panel-strong),var(--panel-2))] p-4 shadow-[var(--shadow-tight)] backdrop-blur-xl xl:p-5">
+            <div className="rounded-[28px] border border-(--border) bg-[linear-gradient(150deg,var(--panel-strong),var(--panel-2))] p-4 shadow-(--shadow-tight) backdrop-blur-xl xl:p-5">
               <div className="flex items-start justify-between gap-3 md:flex-col md:items-center md:text-center xl:flex-row xl:items-start xl:text-left">
                 <div className="space-y-2">
-                  <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-[16px] border border-[var(--border)] bg-[linear-gradient(135deg,var(--blue),rgba(34,197,94,0.82))] text-xs font-bold uppercase tracking-[0.18em] text-white shadow-[var(--shadow-tight)] xl:mx-0">
+                  <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-2xl border border-(--border) bg-[linear-gradient(135deg,var(--blue),rgba(34,197,94,0.82))] text-xs font-bold uppercase tracking-[0.18em] text-white shadow-(--shadow-tight) xl:mx-0">
                     GT
                   </div>
                   <div>
                     <p className="text-xl font-semibold xl:text-2xl">
                       GoDomain
                     </p>
-                    <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.22em] text-[var(--muted-2)]">
+                    <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.22em] text-(--muted-2)">
                       Teacher dashboard
                     </p>
                   </div>
@@ -340,7 +340,7 @@ export default function SideFoot({ active = "Overview" }) {
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
-                  className="icon-shell flex h-10 w-10 items-center justify-center text-[var(--fg)] md:hidden"
+                  className="icon-shell flex h-10 w-10 items-center justify-center text-foreground md:hidden"
                   aria-label="Close sidebar"
                 >
                   <CloseIcon className="h-4 w-4" />
@@ -348,23 +348,23 @@ export default function SideFoot({ active = "Overview" }) {
               </div>
 
               <div className="mt-4 grid gap-3 md:justify-items-center xl:grid-cols-2 xl:justify-items-stretch">
-                <div className="w-full rounded-[22px] border border-[var(--border)] bg-[var(--panel)]/82 px-4 py-3 md:px-3 md:py-3 md:text-center xl:px-4 xl:text-left">
+                <div className="w-full rounded-[22px] border border-(--border) bg-(--panel)/82 px-4 py-3 md:px-3 md:py-3 md:text-center xl:px-4 xl:text-left">
                   <div className="flex items-center gap-3 md:justify-center xl:justify-start">
-                    <div className="h-2.5 w-2.5 rounded-full bg-[var(--green)] shadow-[0_0_0_6px_rgba(34,197,94,0.12)]" />
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--muted-2)]">
+                    <div className="h-2.5 w-2.5 rounded-full bg-(--green) shadow-[0_0_0_6px_rgba(34,197,94,0.12)]" />
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-(--muted-2)">
                       Status
                     </p>
                   </div>
-                  <p className="mt-2 text-sm font-semibold text-[var(--fg)]">
+                  <p className="mt-2 text-sm font-semibold text-foreground">
                     Classes running smoothly
                   </p>
                 </div>
 
-                <div className="hidden rounded-[22px] border border-[var(--border)] bg-[linear-gradient(135deg,rgba(37,99,235,0.12),rgba(34,197,94,0.14))] px-4 py-3 xl:block">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--muted-2)]">
+                <div className="hidden rounded-[22px] border border-(--border) bg-[linear-gradient(135deg,rgba(37,99,235,0.12),rgba(34,197,94,0.14))] px-4 py-3 xl:block">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-(--muted-2)">
                     Today
                   </p>
-                  <p className="mt-2 text-sm font-semibold text-[var(--fg)]">
+                  <p className="mt-2 text-sm font-semibold text-foreground">
                     18 lessons, 6 open slots
                   </p>
                 </div>
@@ -380,8 +380,8 @@ export default function SideFoot({ active = "Overview" }) {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className={`nav-item group flex items-center gap-3 rounded-[24px] px-4 py-3.5 text-sm font-medium md:flex-col md:justify-center md:px-2 md:py-3 xl:flex-row xl:justify-between xl:px-4 xl:py-3.5 ${
-                      isActive ? "nav-item-active" : "text-[var(--fg)]"
+                    className={`nav-item group flex items-center gap-3 rounded-3xl px-4 py-3.5 text-sm font-medium md:flex-col md:justify-center md:px-2 md:py-3 xl:flex-row xl:justify-between xl:px-4 xl:py-3.5 ${
+                      isActive ? "nav-item-active" : "text-foreground"
                     }`}
                     onClick={() => setOpen(false)}
                   >
@@ -390,7 +390,7 @@ export default function SideFoot({ active = "Overview" }) {
                         className={`icon-shell h-11 w-11 shrink-0 md:h-12 md:w-12 xl:h-11 xl:w-11 ${
                           isActive
                             ? "border-white/20 bg-white/14 text-white"
-                            : "text-[var(--blue)] group-hover:-rotate-3 group-hover:scale-110"
+                            : "text-(--blue) group-hover:-rotate-3 group-hover:scale-110"
                         }`}
                       >
                         <Icon className="h-5 w-5" />
@@ -402,7 +402,7 @@ export default function SideFoot({ active = "Overview" }) {
                         </span>
                         <span
                           className={`mt-1 block text-[10px] font-semibold uppercase tracking-[0.18em] md:hidden xl:block ${
-                            isActive ? "text-white/72" : "text-[var(--muted-2)]"
+                            isActive ? "text-white/72" : "text-(--muted-2)"
                           }`}
                         >
                           {item.hint}
@@ -416,7 +416,7 @@ export default function SideFoot({ active = "Overview" }) {
                             className={`chip ${
                               isActive
                                 ? "border-white/18 bg-white/14 text-white"
-                                : "bg-[var(--green)] text-[var(--fg)]"
+                                : "bg-(--green) text-foreground"
                             }`}
                           >
                             {item.badge}
@@ -427,7 +427,7 @@ export default function SideFoot({ active = "Overview" }) {
                         className={`flex h-9 w-9 items-center justify-center rounded-full border ${
                           isActive
                             ? "border-white/18 bg-white/12 text-white"
-                            : "border-[var(--border)] bg-[var(--panel)]/70 text-[var(--muted)]"
+                            : "border-(--border) bg-(--panel)/70 text-(--muted)"
                         }`}
                       >
                         <ArrowIcon className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -470,23 +470,23 @@ export default function SideFoot({ active = "Overview" }) {
               </div>
             </div>
 
-            <div className="mt-auto rounded-[28px] border border-[var(--border)] bg-[linear-gradient(160deg,var(--panel-strong),var(--panel-deep))] p-4 shadow-[var(--shadow-tight)] backdrop-blur-xl xl:p-5">
+            <div className="mt-auto rounded-[28px] border border-(--border) bg-[linear-gradient(160deg,var(--panel-strong),var(--panel-deep))] p-4 shadow-(--shadow-tight) backdrop-blur-xl xl:p-5">
               <div className="flex items-center gap-3 md:flex-col md:text-center xl:flex-row xl:text-left">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,var(--green),rgba(37,99,235,0.82))] text-sm font-bold text-white shadow-[var(--shadow-tight)]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,var(--green),rgba(37,99,235,0.82))] text-sm font-bold text-white shadow-(--shadow-tight)">
                   JW
                 </div>
                 <div>
                   <p className="text-base font-semibold xl:text-lg">
                     Jane Wambui
                   </p>
-                  <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[var(--muted-2)]">
+                  <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-(--muted-2)">
                     Senior instructor
                   </p>
                 </div>
               </div>
 
-              <div className="mt-4 hidden rounded-[22px] border border-[var(--border)] bg-[var(--panel)]/74 px-4 py-3 xl:block">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--muted-2)]">
+              <div className="mt-4 hidden rounded-[22px] border border-(--border) bg-(--panel)/74 px-4 py-3 xl:block">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-(--muted-2)">
                   Current route
                 </p>
                 <p className="mt-2 text-sm font-semibold">

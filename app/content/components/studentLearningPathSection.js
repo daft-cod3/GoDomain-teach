@@ -463,21 +463,21 @@ export default function StudentLearningPathSection() {
   const hiddenLessons = readUnitCount(units, "Hidden");
 
   return (
-    <section className="dashboard-section relative rounded-[34px] px-6 py-6 shadow-[var(--shadow)] sm:px-8">
-      <div className="float-soft absolute left-8 top-8 h-28 w-28 rounded-full bg-[var(--aura-green)] blur-3xl" />
-      <div className="absolute right-10 top-10 h-24 w-24 rounded-full bg-[var(--aura-blue)] blur-3xl" />
-      <div className="absolute bottom-0 right-16 h-36 w-36 rounded-full bg-[var(--aura-rose)] blur-3xl" />
+    <section className="dashboard-section relative rounded-[34px] px-6 py-6 shadow-(--shadow) sm:px-8">
+      <div className="float-soft absolute left-8 top-8 h-28 w-28 rounded-full bg-(--aura-green) blur-3xl" />
+      <div className="absolute right-10 top-10 h-24 w-24 rounded-full bg-(--aura-blue) blur-3xl" />
+      <div className="absolute bottom-0 right-16 h-36 w-36 rounded-full bg-(--aura-rose) blur-3xl" />
 
       <div className="relative">
         <div className="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
           <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[var(--fg)]/58">
+            <p className="text-xs font-semibold uppercase tracking-[0.34em] text-(--fg)/58">
               Student learning path
             </p>
             <h2 className="mt-2 font-display text-3xl font-semibold sm:text-4xl">
               A polished GoDomain lesson path built for teacher control.
             </h2>
-            <p className="mt-3 max-w-2xl text-sm font-medium leading-6 text-[var(--fg)]/72 sm:text-[15px]">
+            <p className="mt-3 max-w-2xl text-sm font-medium leading-6 text-(--fg)/72 sm:text-[15px]">
               The path map uses tabbed units and circular lesson nodes so
               teachers can switch units quickly, then manage access, pacing,
               advancement, and lesson content from one linked editor.
@@ -485,20 +485,20 @@ export default function StudentLearningPathSection() {
           </div>
 
           <div className="grid gap-3 sm:grid-cols-3">
-            <div className="glass-soft rounded-[24px] px-4 py-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--fg)]/58">
+            <div className="glass-soft rounded-3xl px-4 py-4">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-(--fg)/58">
                 Units
               </p>
               <p className="mt-2 text-2xl font-semibold">{units.length}</p>
             </div>
-            <div className="glass-soft rounded-[24px] px-4 py-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--fg)]/58">
+            <div className="glass-soft rounded-3xl px-4 py-4">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-(--fg)/58">
                 Lessons
               </p>
               <p className="mt-2 text-2xl font-semibold">{totalLessons}</p>
             </div>
-            <div className="glass-soft rounded-[24px] px-4 py-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--fg)]/58">
+            <div className="glass-soft rounded-3xl px-4 py-4">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-(--fg)/58">
                 Hidden
               </p>
               <p className="mt-2 text-2xl font-semibold">{hiddenLessons}</p>
@@ -510,14 +510,14 @@ export default function StudentLearningPathSection() {
           <div className="glass path-grid rounded-[30px] p-4 sm:p-6">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--fg)]/58">
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-(--fg)/58">
                   Path map
                 </p>
                 <h3 className="mt-1 font-display text-2xl font-semibold">
                   GoDomain learning flow
                 </h3>
               </div>
-              <span className="chip bg-[var(--panel-strong)] text-[var(--fg)]">
+              <span className="chip bg-(--panel-strong) text-foreground">
                 {openLessons} open
               </span>
             </div>
@@ -531,10 +531,10 @@ export default function StudentLearningPathSection() {
                     key={unit.id}
                     type="button"
                     onClick={() => selectUnit(unitIndex)}
-                    className={`rounded-full border px-4 py-3 text-left text-sm font-semibold shadow-[var(--shadow-tight)] ${
+                    className={`rounded-full border px-4 py-3 text-left text-sm font-semibold shadow-(--shadow-tight) ${
                       isActive
                         ? "scale-[1.03] text-white ring-2 ring-white/45"
-                        : "bg-[var(--panel-strong)] text-[var(--fg)] hover:-translate-y-1"
+                        : "bg-(--panel-strong) text-foreground hover:-translate-y-1"
                     }`}
                     style={{
                       borderColor: isActive ? unit.tone.solid : "var(--border)",
@@ -553,22 +553,22 @@ export default function StudentLearningPathSection() {
             </div>
 
             <div className="mt-4 grid gap-3 md:grid-cols-[1.1fr_0.9fr]">
-              <div className="rounded-[24px] border border-[var(--border)] bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] px-4 py-4 shadow-[var(--shadow-tight)]">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--fg)]/56">
+              <div className="rounded-3xl border border-(--border) bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] px-4 py-4 shadow-(--shadow-tight)">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-(--fg)/56">
                   Currently editing
                 </p>
                 <p className="mt-2 text-lg font-semibold">
                   {currentUnit.title}
                 </p>
-                <p className="mt-1 text-sm font-medium text-[var(--fg)]/65">
+                <p className="mt-1 text-sm font-medium text-(--fg)/65">
                   {currentLesson.sessionLabel} | {currentLesson.title}
                 </p>
               </div>
-              <div className="rounded-[24px] border border-[var(--border)] bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] px-4 py-4 shadow-[var(--shadow-tight)]">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--fg)]/56">
+              <div className="rounded-3xl border border-(--border) bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] px-4 py-4 shadow-(--shadow-tight)">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-(--fg)/56">
                   Editor status
                 </p>
-                <p className="mt-2 text-sm font-semibold text-[var(--fg)]">
+                <p className="mt-2 text-sm font-semibold text-foreground">
                   {editorStatus}
                 </p>
               </div>
@@ -583,7 +583,7 @@ export default function StudentLearningPathSection() {
               }}
             >
               <div
-                className="rounded-[24px] px-4 py-4 text-white"
+                className="rounded-3xl px-4 py-4 text-white"
                 style={{
                   background: `linear-gradient(135deg, ${currentUnit.tone.solid}, rgba(15, 23, 42, 0.82))`,
                 }}
@@ -611,9 +611,9 @@ export default function StudentLearningPathSection() {
                 </p>
               </div>
 
-              <div className="relative mx-auto mt-6 max-w-[330px] pb-2">
+              <div className="relative mx-auto mt-6 max-w-82.5 pb-2">
                 <div
-                  className="absolute bottom-7 left-1/2 top-6 w-[3px] -translate-x-1/2 rounded-full"
+                  className="absolute bottom-7 left-1/2 top-6 w-0.75 -translate-x-1/2 rounded-full"
                   style={{
                     background: `linear-gradient(180deg, ${currentUnit.tone.line}, var(--panel-deep))`,
                   }}
@@ -636,7 +636,7 @@ export default function StudentLearningPathSection() {
                         onClick={() =>
                           selectLesson(selectedUnitIndex, lessonIndex)
                         }
-                        className={`lesson-orb relative flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border text-xl font-semibold sm:h-20 sm:w-20 ${
+                        className={`lesson-orb relative flex h-18 w-18 items-center justify-center rounded-full border text-xl font-semibold sm:h-20 sm:w-20 ${
                           selected
                             ? "scale-110 text-white ring-8 ring-white/45"
                             : ""
@@ -660,7 +660,7 @@ export default function StudentLearningPathSection() {
                       </button>
 
                       <div
-                        className={`mt-3 rounded-[22px] border px-4 py-3 text-center shadow-[var(--shadow-tight)] ${
+                        className={`mt-3 rounded-[22px] border px-4 py-3 text-center shadow-(--shadow-tight) ${
                           selected
                             ? "bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))]"
                             : "bg-[linear-gradient(180deg,var(--panel),var(--panel-deep))] backdrop-blur-md"
@@ -671,10 +671,10 @@ export default function StudentLearningPathSection() {
                             : "var(--border)",
                         }}
                       >
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--fg)]/54">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-(--fg)/54">
                           {lesson.sessionLabel}
                         </p>
-                        <p className="mt-1 max-w-[180px] text-sm font-semibold leading-5">
+                        <p className="mt-1 max-w-45 text-sm font-semibold leading-5">
                           {lesson.title}
                         </p>
                         <span
@@ -699,7 +699,7 @@ export default function StudentLearningPathSection() {
           <div className="glass rounded-[30px] p-4 sm:p-6">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--fg)]/58">
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-(--fg)/58">
                   Active editor
                 </p>
                 <h3 className="mt-1 font-display text-2xl font-semibold">
@@ -707,7 +707,7 @@ export default function StudentLearningPathSection() {
                 </h3>
               </div>
               <div className="flex flex-wrap gap-2">
-                <span className="chip bg-[var(--panel-strong)] text-[var(--fg)]">
+                <span className="chip bg-(--panel-strong) text-foreground">
                   {editorStatus}
                 </span>
                 <span
@@ -716,17 +716,17 @@ export default function StudentLearningPathSection() {
                 >
                   {currentLesson.sessionLabel}
                 </span>
-                <span className="chip bg-[var(--panel-strong)] text-[var(--fg)]">
+                <span className="chip bg-(--panel-strong) text-foreground">
                   {currentLesson.period}
                 </span>
               </div>
             </div>
 
             <div className="mt-5 grid gap-4">
-              <div className="rounded-[26px] border border-[var(--border)] bg-[linear-gradient(180deg,var(--panel),var(--panel-deep))] p-4 backdrop-blur-xl">
+              <div className="rounded-[26px] border border-(--border) bg-[linear-gradient(180deg,var(--panel),var(--panel-deep))] p-4 backdrop-blur-xl">
                 <p className="text-sm font-semibold">Unit settings</p>
                 <div className="mt-4 grid gap-3">
-                  <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/58">
+                  <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-(--fg)/58">
                     Unit title
                     <input
                       type="text"
@@ -739,7 +739,7 @@ export default function StudentLearningPathSection() {
                   </label>
 
                   <div className="grid gap-3 sm:grid-cols-2">
-                    <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/58">
+                    <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--fg)/58">
                       Unit period
                       <select
                         value={currentUnit.window}
@@ -755,7 +755,7 @@ export default function StudentLearningPathSection() {
                       </select>
                     </label>
 
-                    <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/58">
+                    <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-(--fg)/58">
                       Unit advancement
                       <select
                         value={currentUnit.advancement}
@@ -771,7 +771,7 @@ export default function StudentLearningPathSection() {
                     </label>
                   </div>
 
-                  <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/58">
+                  <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-(--fg)/58">
                     Unit brief
                     <textarea
                       rows="3"
@@ -785,7 +785,7 @@ export default function StudentLearningPathSection() {
                 </div>
               </div>
 
-              <div className="rounded-[26px] border border-[var(--border)] bg-[linear-gradient(180deg,var(--panel),var(--panel-deep))] p-4 backdrop-blur-xl">
+              <div className="rounded-[26px] border border-(--border) bg-[linear-gradient(180deg,var(--panel),var(--panel-deep))] p-4 backdrop-blur-xl">
                 <div className="flex items-center justify-between gap-3">
                   <p className="text-sm font-semibold">Lesson controls</p>
                   <div className="flex gap-2">
@@ -807,7 +807,7 @@ export default function StudentLearningPathSection() {
                 </div>
 
                 <div className="mt-4 grid gap-3">
-                  <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/58">
+                  <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-(--fg)/58">
                     Lesson title
                     <input
                       type="text"
@@ -820,7 +820,7 @@ export default function StudentLearningPathSection() {
                   </label>
 
                   <div className="grid gap-3 sm:grid-cols-3">
-                    <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/58">
+                    <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-(--fg)/58">
                       Access
                       <select
                         value={currentLesson.access}
@@ -835,7 +835,7 @@ export default function StudentLearningPathSection() {
                       </select>
                     </label>
 
-                    <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/58">
+                    <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-(--fg)/58">
                       Period
                       <select
                         value={currentLesson.period}
@@ -850,7 +850,7 @@ export default function StudentLearningPathSection() {
                       </select>
                     </label>
 
-                    <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/58">
+                    <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-(--fg)/58">
                       Advancement
                       <select
                         value={currentLesson.advancement}
@@ -866,7 +866,7 @@ export default function StudentLearningPathSection() {
                     </label>
                   </div>
 
-                  <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/58">
+                  <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-(--fg)/58">
                     Lesson brief
                     <textarea
                       rows="3"
@@ -880,11 +880,11 @@ export default function StudentLearningPathSection() {
                 </div>
               </div>
 
-              <div className="rounded-[26px] border border-[var(--border)] bg-[linear-gradient(180deg,var(--panel),var(--panel-deep))] p-4 backdrop-blur-xl">
+              <div className="rounded-[26px] border border-(--border) bg-[linear-gradient(180deg,var(--panel),var(--panel-deep))] p-4 backdrop-blur-xl">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div>
                     <p className="text-sm font-semibold">Content builder</p>
-                    <p className="mt-1 text-xs font-medium text-[var(--fg)]/56">
+                    <p className="mt-1 text-xs font-medium text-(--fg)/56">
                       Insert, move, delete, and write content for each lesson.
                     </p>
                   </div>
@@ -913,7 +913,7 @@ export default function StudentLearningPathSection() {
                     <button
                       type="button"
                       onClick={deleteBlock}
-                      className={`${toolButtonClass} border-[rgba(225,29,72,0.18)] text-[var(--rose)]`}
+                      className={`${toolButtonClass} border-[rgba(225,29,72,0.18)] text-(--rose)`}
                     >
                       Delete
                     </button>
@@ -928,8 +928,8 @@ export default function StudentLearningPathSection() {
                       onClick={() => setSelectedBlockIndex(blockIndex)}
                       className={`shrink-0 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] ${
                         blockIndex === safeBlockIndex
-                          ? "border-transparent text-white shadow-[var(--shadow-tight)]"
-                          : "border-[var(--border)] bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] text-[var(--fg)]/68"
+                          ? "border-transparent text-white shadow-(--shadow-tight)"
+                          : "border-(--border) bg-[linear-gradient(180deg,var(--panel-strong),var(--panel-2))] text-(--fg)/68"
                       }`}
                       style={
                         blockIndex === safeBlockIndex
@@ -943,7 +943,7 @@ export default function StudentLearningPathSection() {
                 </div>
 
                 <div className="mt-4 grid gap-3">
-                  <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/58">
+                  <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-(--fg)/58">
                     Block label
                     <input
                       type="text"
@@ -955,7 +955,7 @@ export default function StudentLearningPathSection() {
                     />
                   </label>
 
-                  <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--fg)]/58">
+                  <label className="space-y-2 text-xs font-semibold uppercase tracking-[0.18em] text-(--fg)/58">
                     Lesson content
                     <textarea
                       value={currentBlock.text}
@@ -983,7 +983,7 @@ export default function StudentLearningPathSection() {
                   ].map((shortcut) => (
                     <div
                       key={shortcut.label}
-                      className="rounded-[22px] border border-[var(--border)] bg-[linear-gradient(180deg,var(--panel),var(--panel-deep))] px-4 py-3"
+                      className="rounded-[22px] border border-(--border) bg-[linear-gradient(180deg,var(--panel),var(--panel-deep))] px-4 py-3"
                     >
                       <div className="flex flex-wrap gap-2">
                         {shortcut.keys.map((key) => (
@@ -992,7 +992,7 @@ export default function StudentLearningPathSection() {
                           </kbd>
                         ))}
                       </div>
-                      <p className="mt-3 text-xs font-medium text-[var(--fg)]/64">
+                      <p className="mt-3 text-xs font-medium text-(--fg)/64">
                         {shortcut.label}
                       </p>
                     </div>

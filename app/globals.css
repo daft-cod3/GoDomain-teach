@@ -1,58 +1,114 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #f4f8ff;
+  /* Modern EdTech Colors */
+  --bg: #f8fafc;
   --fg: #0f172a;
-  --blue: #2563eb;
+  --primary: #5b4aff;
+  --primary-dark: #4338ca;
+  --secondary: #06b6d4;
+  --accent: #ec4899;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #3b82f6;
+  
+  /* EdTech Specific Blues */
+  --blue: #3b82f6;
+  --blue-dark: #1e40af;
+  --blue-light: #60a5fa;
   --blue-2: #1d4ed8;
-  --green: #22c55e;
+  
+  /* Complements */
+  --green: #10b981;
   --amber: #f59e0b;
   --amber-soft: #fff1c4;
-  --rose: #e11d48;
-  --panel: rgba(255, 255, 255, 0.9);
-  --panel-2: rgba(238, 244, 255, 0.92);
-  --panel-3: rgba(221, 235, 255, 0.7);
+  --rose: #f43f5e;
+  --purple: #a855f7;
+  --cyan: #06b6d4;
+  
+  /* Surfaces */
+  --panel: rgba(255, 255, 255, 0.92);
+  --panel-2: rgba(248, 250, 255, 0.94);
+  --panel-3: rgba(241, 245, 255, 0.88);
   --panel-strong: rgba(255, 255, 255, 0.98);
-  --panel-deep: rgba(248, 251, 255, 0.76);
+  --panel-deep: rgba(248, 251, 255, 0.8);
   --input: rgba(255, 255, 255, 0.92);
-  --border: rgba(15, 23, 42, 0.12);
+  
+  /* Borders & Text */
+  --border: rgba(15, 23, 42, 0.1);
+  --border-light: rgba(15, 23, 42, 0.06);
   --muted: rgba(15, 23, 42, 0.68);
   --muted-2: rgba(15, 23, 42, 0.5);
-  --shadow: 0 18px 38px rgba(15, 23, 42, 0.12);
-  --shadow-tight: 0 10px 24px rgba(15, 23, 42, 0.12);
-  --glass: rgba(255, 255, 255, 0.72);
-  --glass-soft: rgba(255, 255, 255, 0.54);
-  --aura-blue: rgba(37, 99, 235, 0.18);
-  --aura-green: rgba(34, 197, 94, 0.14);
-  --aura-rose: rgba(225, 29, 72, 0.12);
+  
+  /* Shadows */
+  --shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+  --shadow-tight: 0 8px 20px rgba(15, 23, 42, 0.1);
+  --shadow-lg: 0 25px 50px rgba(15, 23, 42, 0.15);
+  
+  /* Glass Effects */
+  --glass: rgba(255, 255, 255, 0.75);
+  --glass-soft: rgba(255, 255, 255, 0.6);
+  
+  /* Auras & Glows */
+  --aura-blue: rgba(59, 130, 246, 0.15);
+  --aura-purple: rgba(168, 85, 247, 0.12);
+  --aura-green: rgba(16, 185, 129, 0.12);
+  --aura-cyan: rgba(6, 182, 212, 0.12);
+  --aura-rose: rgba(244, 63, 94, 0.12);
+  
   color-scheme: light;
 }
 
 :root[data-theme="dark"] {
-  --bg: #0b1220;
-  --fg: #e2e8f0;
-  --blue: #4f7cff;
+  --bg: #0f172a;
+  --fg: #f1f5f9;
+  --primary: #7c3aed;
+  --primary-dark: #6d28d9;
+  --secondary: #06b6d4;
+  --accent: #ec4899;
+  --success: #34d399;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --info: #60a5fa;
+  
+  --blue: #60a5fa;
+  --blue-dark: #3b82f6;
+  --blue-light: #93c5fd;
   --blue-2: #2b55e4;
-  --green: #2dd174;
+  
+  --green: #34d399;
   --amber: #fbbf24;
   --amber-soft: #3d2f12;
   --rose: #fb7185;
-  --panel: rgba(18, 26, 43, 0.88);
-  --panel-2: rgba(24, 36, 58, 0.92);
-  --panel-3: rgba(35, 51, 79, 0.84);
-  --panel-strong: rgba(24, 36, 58, 0.98);
-  --panel-deep: rgba(11, 18, 32, 0.78);
-  --input: rgba(9, 15, 27, 0.88);
-  --border: rgba(226, 232, 240, 0.14);
-  --muted: rgba(226, 232, 240, 0.74);
-  --muted-2: rgba(226, 232, 240, 0.52);
-  --shadow: 0 18px 38px rgba(0, 0, 0, 0.4);
-  --shadow-tight: 0 10px 24px rgba(0, 0, 0, 0.35);
-  --glass: rgba(18, 26, 43, 0.76);
-  --glass-soft: rgba(18, 26, 43, 0.58);
-  --aura-blue: rgba(79, 124, 255, 0.22);
-  --aura-green: rgba(45, 209, 116, 0.16);
-  --aura-rose: rgba(251, 113, 133, 0.16);
+  --purple: #d8b4fe;
+  --cyan: #22d3ee;
+  
+  --panel: rgba(30, 41, 59, 0.9);
+  --panel-2: rgba(30, 41, 59, 0.92);
+  --panel-3: rgba(30, 41, 59, 0.85);
+  --panel-strong: rgba(30, 41, 59, 0.98);
+  --panel-deep: rgba(15, 23, 42, 0.82);
+  --input: rgba(15, 23, 42, 0.9);
+  
+  --border: rgba(226, 232, 240, 0.12);
+  --border-light: rgba(226, 232, 240, 0.08);
+  --muted: rgba(226, 232, 240, 0.72);
+  --muted-2: rgba(226, 232, 240, 0.5);
+  
+  --shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  --shadow-tight: 0 8px 20px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 25px 50px rgba(0, 0, 0, 0.55);
+  
+  --glass: rgba(30, 41, 59, 0.8);
+  --glass-soft: rgba(30, 41, 59, 0.65);
+  
+  --aura-blue: rgba(96, 165, 250, 0.18);
+  --aura-purple: rgba(216, 180, 254, 0.14);
+  --aura-green: rgba(52, 211, 153, 0.14);
+  --aura-cyan: rgba(34, 211, 238, 0.14);
+  --aura-rose: rgba(251, 113, 133, 0.14);
+  
   color-scheme: dark;
 }
 
@@ -62,30 +118,54 @@
 
 @media (prefers-color-scheme: dark) {
   :root[data-theme="system"] {
-    --bg: #0b1220;
-    --fg: #e2e8f0;
-    --blue: #4f7cff;
+    --bg: #0f172a;
+    --fg: #f1f5f9;
+    --primary: #7c3aed;
+    --primary-dark: #6d28d9;
+    --secondary: #06b6d4;
+    --accent: #ec4899;
+    --success: #34d399;
+    --warning: #fbbf24;
+    --danger: #f87171;
+    --info: #60a5fa;
+    
+    --blue: #60a5fa;
+    --blue-dark: #3b82f6;
+    --blue-light: #93c5fd;
     --blue-2: #2b55e4;
-    --green: #2dd174;
+    
+    --green: #34d399;
     --amber: #fbbf24;
     --amber-soft: #3d2f12;
     --rose: #fb7185;
-    --panel: rgba(18, 26, 43, 0.88);
-    --panel-2: rgba(24, 36, 58, 0.92);
-    --panel-3: rgba(35, 51, 79, 0.84);
-    --panel-strong: rgba(24, 36, 58, 0.98);
-    --panel-deep: rgba(11, 18, 32, 0.78);
-    --input: rgba(9, 15, 27, 0.88);
-    --border: rgba(226, 232, 240, 0.14);
-    --muted: rgba(226, 232, 240, 0.74);
-    --muted-2: rgba(226, 232, 240, 0.52);
-    --shadow: 0 18px 38px rgba(0, 0, 0, 0.4);
-    --shadow-tight: 0 10px 24px rgba(0, 0, 0, 0.35);
-    --glass: rgba(18, 26, 43, 0.76);
-    --glass-soft: rgba(18, 26, 43, 0.58);
-    --aura-blue: rgba(79, 124, 255, 0.22);
-    --aura-green: rgba(45, 209, 116, 0.16);
-    --aura-rose: rgba(251, 113, 133, 0.16);
+    --purple: #d8b4fe;
+    --cyan: #22d3ee;
+    
+    --panel: rgba(30, 41, 59, 0.9);
+    --panel-2: rgba(30, 41, 59, 0.92);
+    --panel-3: rgba(30, 41, 59, 0.85);
+    --panel-strong: rgba(30, 41, 59, 0.98);
+    --panel-deep: rgba(15, 23, 42, 0.82);
+    --input: rgba(15, 23, 42, 0.9);
+    
+    --border: rgba(226, 232, 240, 0.12);
+    --border-light: rgba(226, 232, 240, 0.08);
+    --muted: rgba(226, 232, 240, 0.72);
+    --muted-2: rgba(226, 232, 240, 0.5);
+    
+    --shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    --shadow-tight: 0 8px 20px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 25px 50px rgba(0, 0, 0, 0.55);
+    
+    --glass: rgba(30, 41, 59, 0.8);
+    --glass-soft: rgba(30, 41, 59, 0.65);
+    
+    --aura-blue: rgba(96, 165, 250, 0.18);
+    --aura-purple: rgba(216, 180, 254, 0.14);
+    --aura-green: rgba(52, 211, 153, 0.14);
+    --aura-cyan: rgba(34, 211, 238, 0.14);
+    --aura-rose: rgba(251, 113, 133, 0.14);
+    
     color-scheme: dark;
   }
 }
@@ -122,12 +202,13 @@ body {
   overflow-x: clip;
   background-image:
     radial-gradient(
-      circle at top left,
-      rgba(37, 99, 235, 0.14),
-      transparent 50%
+      circle at -5% 5%,
+      rgba(91, 74, 255, 0.12),
+      transparent 45%
     ),
-    radial-gradient(circle at 80% 10%, rgba(34, 197, 94, 0.14), transparent 42%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 30%);
+    radial-gradient(circle at 105% 15%, rgba(59, 130, 246, 0.12), transparent 40%),
+    radial-gradient(circle at 50% 110%, rgba(168, 85, 247, 0.08), transparent 50%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 35%);
   min-height: 100vh;
 }
 
@@ -138,9 +219,9 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background-image:
-    radial-gradient(circle at 14% 18%, var(--aura-blue), transparent 28%),
-    radial-gradient(circle at 84% 12%, var(--aura-green), transparent 24%),
-    radial-gradient(circle at 70% 74%, var(--aura-rose), transparent 22%);
+    radial-gradient(circle at 8% 15%, var(--aura-blue), transparent 25%),
+    radial-gradient(circle at 92% 8%, var(--aura-purple), transparent 22%),
+    radial-gradient(circle at 70% 80%, var(--aura-cyan), transparent 28%);
 }
 
 ::selection {
@@ -157,10 +238,9 @@ body::before {
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  background:
-    linear-gradient(180deg, var(--panel), var(--panel-deep)), var(--panel);
+  background: linear-gradient(135deg, var(--panel), var(--panel-deep));
   border: 1px solid var(--border);
-  border-radius: 24px;
+  border-radius: 28px;
   box-shadow: var(--shadow-tight);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -170,15 +250,25 @@ body::before {
   content: "";
   position: absolute;
   inset: 1px 1px auto;
-  height: 42%;
+  height: 48%;
   border-radius: inherit;
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.26),
-    transparent 82%
+    rgba(255, 255, 255, 0.32),
+    transparent 85%
   );
-  opacity: 0.7;
+  opacity: 0.8;
   pointer-events: none;
+}
+
+.panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, transparent 30%, rgba(91, 74, 255, 0.04));
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .panel-soft {
@@ -433,22 +523,41 @@ body::before {
 
 .app-shell {
   min-height: 100vh;
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .dashboard-layout {
   display: grid;
   width: 100%;
   align-items: start;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .dashboard-main {
   min-width: 0;
+  padding-bottom: 2rem;
 }
 
 .dashboard-main > * {
   min-width: 0;
+}
+
+.section-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.section-heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
 }
 
 button:focus-visible,
@@ -490,6 +599,274 @@ textarea {
   }
 }
 
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes pulse-gentle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(91, 74, 255, 0.2), var(--shadow-tight);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(91, 74, 255, 0.4), var(--shadow);
+  }
+}
+
+/* Modern EdTech Utilities */
+.card-elevated {
+  position: relative;
+  background: linear-gradient(135deg, var(--panel), var(--panel-deep));
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(20px);
+}
+
+.card-elevated:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: var(--shadow-lg);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(91, 74, 255, 0.2);
+}
+
+.badge-success {
+  background: linear-gradient(135deg, var(--success), var(--green));
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+.badge-warning {
+  background: linear-gradient(135deg, var(--warning), var(--amber));
+  color: var(--fg);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+}
+
+.badge-danger {
+  background: linear-gradient(135deg, var(--danger), var(--rose));
+  box-shadow: 0 4px 12px rgba(244, 63, 94, 0.2);
+}
+
+.progress-bar {
+  position: relative;
+  height: 8px;
+  background: var(--panel-3);
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 999px;
+  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stat-card {
+  position: relative;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--panel), var(--panel-deep));
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 30%, rgba(91, 74, 255, 0.06));
+  pointer-events: none;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 0.25rem;
+}
+
+.stat-change {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--success);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: linear-gradient(135deg, var(--panel), var(--panel-deep));
+  color: var(--fg);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.icon-btn:hover {
+  background: linear-gradient(135deg, var(--blue), var(--secondary));
+  color: #ffffff;
+  transform: scale(1.08);
+  box-shadow: var(--shadow);
+}
+
+.section-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.section-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  margin-bottom: 0.5rem;
+}
+
+.shimmer-bg {
+  background: linear-gradient(
+    90deg,
+    var(--panel) 0%,
+    var(--panel-2) 50%,
+    var(--panel) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.learning-path-indicator {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, var(--aura-blue), var(--aura-purple));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.milestone-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--panel), var(--panel-deep));
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.milestone-badge:hover {
+  border-color: var(--primary);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(91, 74, 255, 0.2);
+}
+
+.lesson-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: linear-gradient(135deg, var(--panel), var(--panel-deep));
+  backdrop-filter: blur(16px);
+}
+
+.lesson-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(91, 74, 255, 0.1), transparent 70%);
+  pointer-events: none;
+}
+
+.lesson-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.student-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #ffffff;
+  font-weight: 700;
+  border: 2px solid var(--panel);
+}
+
+.progress-ring {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    var(--primary) 0%,
+    var(--primary) var(--progress, 0%),
+    var(--panel-3) var(--progress, 0%),
+    var(--panel-3) 100%
+  );
+  border: 2px solid var(--border);
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none;
@@ -507,24 +884,58 @@ textarea {
 
 @media (min-width: 640px) {
   .app-shell {
-    padding: 1.5rem;
+    padding: 1rem;
+  }
+
+  .section-heading {
+    font-size: 1.75rem;
   }
 }
 
 @media (min-width: 768px) {
+  .app-shell {
+    padding: 1.25rem;
+  }
+
   .dashboard-layout {
     gap: 1.25rem;
     grid-template-columns: minmax(5.75rem, 6.25rem) minmax(0, 1fr);
+  }
+
+  .section-heading {
+    font-size: 2rem;
   }
 }
 
 @media (min-width: 1280px) {
   .app-shell {
-    padding: 2rem;
+    padding: 1.5rem;
   }
 
   .dashboard-layout {
     gap: 1.5rem;
     grid-template-columns: minmax(17.5rem, 18.5rem) minmax(0, 1fr);
+  }
+
+  .section-heading {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .card-elevated:hover {
+    transform: none;
+  }
+
+  .interactive-tile:hover {
+    transform: none;
+  }
+
+  .hover-lift:hover {
+    transform: none;
+  }
+
+  .lesson-card:hover {
+    transform: none;
   }
 }
